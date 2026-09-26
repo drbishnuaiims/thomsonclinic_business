@@ -78,8 +78,13 @@ document.addEventListener(
 
 
 /* =========================================================
-   THEME ENGINE
+   ADVANCED APPEARANCE ENGINE
    ========================================================= */
+
+
+/* ---------------------------------------------------------
+   GET SAVED THEME
+   --------------------------------------------------------- */
 
 function getStoredTheme() {
 
@@ -91,6 +96,25 @@ function getStoredTheme() {
 
 }
 
+
+/* ---------------------------------------------------------
+   GET SYSTEM THEME
+   --------------------------------------------------------- */
+
+function getSystemTheme() {
+
+    return window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    ).matches
+        ? "dark"
+        : "light";
+
+}
+
+
+/* ---------------------------------------------------------
+   APPLY THEME
+   --------------------------------------------------------- */
 
 function applyGlobalTheme(theme) {
 
@@ -116,10 +140,16 @@ function applyGlobalTheme(theme) {
     }
 
 
-    updateThemeIcon(theme);
+    updateAppearanceUI(
+        theme
+    );
 
 }
 
+
+/* ---------------------------------------------------------
+   UPDATE ICON
+   --------------------------------------------------------- */
 
 function updateThemeIcon(theme) {
 
@@ -128,18 +158,19 @@ function updateThemeIcon(theme) {
             "globalThemeIcon"
         );
 
+
     if (!icon) return;
 
 
-    if (theme === "dark") {
+    if (theme === "light") {
 
-        icon.textContent = "☾";
+        icon.textContent = "☀";
 
     }
 
-    else if (theme === "light") {
+    else if (theme === "dark") {
 
-        icon.textContent = "☀";
+        icon.textContent = "☾";
 
     }
 
@@ -152,10 +183,244 @@ function updateThemeIcon(theme) {
 }
 
 
+/* ---------------------------------------------------------
+   UPDATE POPOVER
+   --------------------------------------------------------- */
+
+function updateAppearanceUI(
+    theme
+) {
+
+    updateThemeIcon(
+        theme
+    );
+
+
+    document
+        .querySelectorAll(
+            ".appearance-option"
+        )
+        .forEach(option => {
+
+            option.classList.toggle(
+                "selected",
+                option.dataset.themeChoice ===
+                theme
+            );
+
+        });
+
+
+    const label =
+        document.getElementById(
+            "currentAppearanceLabel"
+        );
+
+
+    if (!label) return;
+
+
+    if (theme === "light") {
+
+        label.textContent =
+            "Light";
+
+    }
+
+    else if (theme === "dark") {
+
+        label.textContent =
+            "Dark";
+
+    }
+
+    else {
+
+        label.textContent =
+            "System";
+
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   INITIAL THEME
+   --------------------------------------------------------- */
+
 applyGlobalTheme(
     getStoredTheme()
 );
 
+
+/* =========================================================
+   APPEARANCE POPOVER
+   ========================================================= */
+
+document.addEventListener(
+    "componentLoaded",
+    event => {
+
+        if (
+            !event.detail.component.includes(
+                "header.html"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        const button =
+            document.getElementById(
+                "globalThemeButton"
+            );
+
+
+        const popover =
+            document.getElementById(
+                "appearancePopover"
+            );
+
+
+        if (
+            !button ||
+            !popover
+        ) {
+
+            return;
+
+        }
+
+
+        /* Open / close */
+
+        button.addEventListener(
+            "click",
+            event => {
+
+                event.stopPropagation();
+
+
+                const isOpen =
+                    popover.classList.toggle(
+                        "open"
+                    );
+
+
+                button.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+            }
+        );
+
+
+        /* Theme options */
+
+        document
+            .querySelectorAll(
+                ".appearance-option"
+            )
+            .forEach(option => {
+
+                option.addEventListener(
+                    "click",
+                    event => {
+
+                        event.stopPropagation();
+
+
+                        const theme =
+                            option.dataset
+                                .themeChoice;
+
+
+                        localStorage.setItem(
+                            "website-theme",
+                            theme
+                        );
+
+
+                        applyGlobalTheme(
+                            theme
+                        );
+
+
+                        popover.classList.remove(
+                            "open"
+                        );
+
+
+                        button.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* Click outside */
+
+        document.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    !popover.contains(
+                        event.target
+                    ) &&
+                    !button.contains(
+                        event.target
+                    )
+                ) {
+
+                    popover.classList.remove(
+                        "open"
+                    );
+
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SYSTEM THEME CHANGES
+   ========================================================= */
+
+window.matchMedia(
+    "(prefers-color-scheme: dark)"
+).addEventListener(
+    "change",
+    () => {
+
+        if (
+            getStoredTheme() === "system"
+        ) {
+
+            applyGlobalTheme(
+                "system"
+            );
+
+        }
+
+    }
+);
 
 /* =========================================================
    THEME BUTTON

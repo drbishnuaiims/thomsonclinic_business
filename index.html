@@ -2556,6 +2556,518 @@ body.search-open {
     }
 
 }
+/* =========================================================
+   APPLE STYLE APPEARANCE POPOVER
+   ========================================================= */
+
+.appearance-container {
+
+    position: relative;
+
+}
+
+
+.appearance-popover {
+
+    position: absolute;
+
+    top: calc(100% + 12px);
+
+    right: 0;
+
+    width: 340px;
+
+    padding: 18px;
+
+    background:
+        var(--surface-solid);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        22px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.22);
+
+    backdrop-filter:
+        blur(30px)
+        saturate(180%);
+
+    -webkit-backdrop-filter:
+        blur(30px)
+        saturate(180%);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(-8px)
+        scale(.96);
+
+    transform-origin:
+        top right;
+
+    pointer-events:
+        none;
+
+    transition:
+        opacity .22s ease,
+        transform .22s ease,
+        visibility .22s ease;
+
+}
+
+
+.appearance-popover.open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events:
+        auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.appearance-header {
+
+    padding:
+        3px 4px 16px;
+
+}
+
+
+.appearance-title {
+
+    font-size:
+        16px;
+
+    font-weight:
+        650;
+
+    color:
+        var(--text);
+
+}
+
+
+.appearance-description {
+
+    margin-top:
+        4px;
+
+    font-size:
+        12px;
+
+    color:
+        var(--secondary);
+
+}
+
+
+/* =========================================================
+   OPTIONS
+   ========================================================= */
+
+.appearance-options {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        8px;
+
+}
+
+
+/* =========================================================
+   OPTION
+   ========================================================= */
+
+.appearance-option {
+
+    position:
+        relative;
+
+    padding:
+        7px;
+
+    border:
+        1px solid transparent;
+
+    border-radius:
+        14px;
+
+    background:
+        transparent;
+
+    color:
+        var(--text);
+
+    cursor:
+        pointer;
+
+    text-align:
+        left;
+
+    transition:
+        all .2s ease;
+
+}
+
+
+.appearance-option:hover {
+
+    background:
+        rgba(127,127,127,.09);
+
+}
+
+
+.appearance-option.selected {
+
+    background:
+        rgba(0,113,227,.08);
+
+    border-color:
+        rgba(0,113,227,.30);
+
+}
+
+
+/* =========================================================
+   PREVIEW
+   ========================================================= */
+
+.appearance-preview {
+
+    height:
+        105px;
+
+    border-radius:
+        10px;
+
+    padding:
+        7px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    overflow:
+        hidden;
+
+}
+
+
+.light-preview {
+
+    background:
+        #e9e9ed;
+
+}
+
+
+.system-preview {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9e9ed 0%,
+            #e9e9ed 50%,
+            #1c1c1e 50%,
+            #1c1c1e 100%
+        );
+
+}
+
+
+.dark-preview {
+
+    background:
+        #101010;
+
+}
+
+
+.preview-window {
+
+    width:
+        90%;
+
+    height:
+        72%;
+
+    border-radius:
+        6px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,.18);
+
+}
+
+
+.light-preview .preview-window {
+
+    background:
+        #ffffff;
+
+}
+
+
+.system-preview .preview-window {
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff 50%,
+            #2c2c2e 50%
+        );
+
+}
+
+
+.dark-preview .preview-window {
+
+    background:
+        #2c2c2e;
+
+}
+
+
+.preview-toolbar {
+
+    height:
+        18%;
+
+    background:
+        rgba(127,127,127,.16);
+
+}
+
+
+.preview-content {
+
+    padding:
+        10px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        5px;
+
+}
+
+
+.preview-content span {
+
+    display:
+        block;
+
+    height:
+        4px;
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(127,127,127,.30);
+
+}
+
+
+.preview-content span:nth-child(1) {
+
+    width:
+        80%;
+
+}
+
+
+.preview-content span:nth-child(2) {
+
+    width:
+        60%;
+
+}
+
+
+.preview-content span:nth-child(3) {
+
+    width:
+        72%;
+
+}
+
+
+/* =========================================================
+   OPTION LABEL
+   ========================================================= */
+
+.appearance-option-name {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        9px 2px 2px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        500;
+
+}
+
+
+.appearance-check {
+
+    opacity:
+        0;
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--accent);
+
+    color:
+        white;
+
+    font-size:
+        11px;
+
+}
+
+
+.appearance-option.selected
+.appearance-check {
+
+    opacity:
+        1;
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.appearance-footer {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-top:
+        15px;
+
+    padding:
+        12px 4px 2px;
+
+    border-top:
+        1px solid var(--border);
+
+    font-size:
+        11px;
+
+    color:
+        var(--secondary);
+
+}
+
+
+.appearance-footer strong {
+
+    color:
+        var(--text);
+
+    font-weight:
+        600;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .appearance-popover {
+
+        position:
+            fixed;
+
+        top:
+            84px;
+
+        right:
+            12px;
+
+        width:
+            calc(100% - 24px);
+
+        max-width:
+            360px;
+
+    }
+
+}
 </style>
 
 </head>

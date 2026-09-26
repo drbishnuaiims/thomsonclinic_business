@@ -2,7 +2,8 @@
 
     <div class="site-nav">
 
-        <!-- macOS-style brand -->
+        <!-- BRAND -->
+
         <a href="/" class="site-brand">
 
             <span class="brand-icon">
@@ -16,7 +17,8 @@
         </a>
 
 
-        <!-- Desktop Navigation -->
+        <!-- DESKTOP MENU -->
+
         <nav class="site-menu" id="siteMenu">
 
             <a href="/" class="nav-link">
@@ -42,15 +44,17 @@
         </nav>
 
 
-        <!-- Right controls -->
+        <!-- RIGHT CONTROLS -->
+
         <div class="nav-controls">
 
 
-            <!-- Search -->
+            <!-- SEARCH -->
+
             <button
                 class="nav-control search-trigger"
                 type="button"
-                aria-label="Search">
+                aria-label="Search website">
 
                 <span class="control-icon">
                     ⌕
@@ -67,21 +71,199 @@
             </button>
 
 
-            <!-- Theme -->
-            <button
-                class="nav-control theme-trigger"
-                type="button"
-                id="globalThemeButton"
-                aria-label="Change appearance">
+            <!-- APPEARANCE -->
 
-                <span id="globalThemeIcon">
-                    ◐
-                </span>
+            <div class="appearance-container">
 
-            </button>
+                <button
+                    class="nav-control theme-trigger"
+                    type="button"
+                    id="globalThemeButton"
+                    aria-label="Change appearance"
+                    aria-expanded="false">
+
+                    <span
+                        id="globalThemeIcon">
+                        ◐
+                    </span>
+
+                </button>
 
 
-            <!-- Mobile -->
+                <!-- APPEARANCE POPOVER -->
+
+                <div
+                    class="appearance-popover"
+                    id="appearancePopover">
+
+
+                    <div class="appearance-header">
+
+                        <div class="appearance-title">
+                            Appearance
+                        </div>
+
+                        <div class="appearance-description">
+                            Choose how this website looks
+                        </div>
+
+                    </div>
+
+
+                    <div class="appearance-options">
+
+
+                        <!-- LIGHT -->
+
+                        <button
+                            class="appearance-option"
+                            data-theme-choice="light">
+
+                            <div class="appearance-preview light-preview">
+
+                                <div class="preview-window">
+
+                                    <div class="preview-toolbar">
+                                    </div>
+
+                                    <div class="preview-content">
+
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="appearance-option-name">
+
+                                <span>
+                                    Light
+                                </span>
+
+                                <span
+                                    class="appearance-check">
+                                    ✓
+                                </span>
+
+                            </div>
+
+                        </button>
+
+
+
+                        <!-- SYSTEM -->
+
+                        <button
+                            class="appearance-option"
+                            data-theme-choice="system">
+
+                            <div class="appearance-preview system-preview">
+
+                                <div class="preview-window">
+
+                                    <div class="preview-toolbar">
+                                    </div>
+
+                                    <div class="preview-content">
+
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="appearance-option-name">
+
+                                <span>
+                                    System
+                                </span>
+
+                                <span
+                                    class="appearance-check">
+                                    ✓
+                                </span>
+
+                            </div>
+
+                        </button>
+
+
+
+                        <!-- DARK -->
+
+                        <button
+                            class="appearance-option"
+                            data-theme-choice="dark">
+
+                            <div class="appearance-preview dark-preview">
+
+                                <div class="preview-window">
+
+                                    <div class="preview-toolbar">
+                                    </div>
+
+                                    <div class="preview-content">
+
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="appearance-option-name">
+
+                                <span>
+                                    Dark
+                                </span>
+
+                                <span
+                                    class="appearance-check">
+                                    ✓
+                                </span>
+
+                            </div>
+
+                        </button>
+
+
+                    </div>
+
+
+                    <div class="appearance-footer">
+
+                        <span>
+                            Current appearance:
+                        </span>
+
+                        <strong
+                            id="currentAppearanceLabel">
+                            System
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOBILE -->
+
             <button
                 class="nav-control mobile-trigger"
                 type="button"
@@ -98,13 +280,12 @@
 
             </button>
 
-
         </div>
 
     </div>
 
 
-    <!-- Mobile navigation -->
+    <!-- MOBILE NAVIGATION -->
 
     <div
         class="mobile-navigation"
