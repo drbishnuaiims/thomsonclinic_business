@@ -1,4 +1,4 @@
-# Your Website
+# Thomson Clinic | Mental Health & Neuroscience eClinic
 
 A fast, responsive, framework-free website built with HTML, CSS, JavaScript, and JSON. It is designed for static hosting, including GitHub Pages.
 
@@ -21,7 +21,7 @@ Push this repository, then in GitHub open **Settings → Pages** and select the 
 
 ## Customize
 
-Change `Your Website` in `components/header.html`, `components/footer.html`, titles, and page copy to set your brand. Add a page in `pages/`, add its navigation link where appropriate, then add a matching object to `data/search-index.json` using `title`, `description`, `url`, `category`, and `keywords`.
+The current brand is Thomson Clinic. Update the shared header, footer, page titles, and search index together if the clinic identity changes. Add a page in `pages/`, add its navigation link where appropriate, then add a matching object to `data/search-index.json` using `title`, `description`, `url`, `category`, and `keywords`.
 
 ## Appearance
 
@@ -29,4 +29,4 @@ The header appearance control saves `light`, `dark`, or `system` to localStorage
 
 ## Contact form
 
-The contact form validates in the browser and shows a local confirmation; it does not send data until you connect it to your chosen backend or form service.
+The contact form validates in the browser and shows a local confirmation; it does not send data until you connect it to an appropriate, privacy-reviewed backend or form service. Do not collect personal or health information through it before that review.
