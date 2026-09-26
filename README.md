@@ -1,1 +1,0 @@
-# thomsonclinic_business

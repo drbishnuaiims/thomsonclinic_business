@@ -8,5832 +8,1918 @@
       content="width=device-width, initial-scale=1.0">
 
 <meta name="description"
-      content="Thomson Clinic for Doctors — Professional websites, complimentary doctor portal listing and digital presence solutions for healthcare professionals.">
+      content="Your website description">
 
-<meta name="theme-color" content="#075985">
-
-<title>For Doctors | Thomson Clinic</title>
-
-
-<!-- =====================================================
-     FONTS
-===================================================== -->
-
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
-      rel="stylesheet">
-
+<title>Your Website</title>
 
 <style>
 
-/* =====================================================
-   THOMSON CLINIC — DOCTORS
-   LIGHT + DARK DESIGN SYSTEM
-===================================================== */
+/* =========================================================
+   GLOBAL DESIGN SYSTEM
+   ========================================================= */
 
-:root{
+:root {
 
-    --primary:#075985;
-    --primary-2:#087fc4;
-    --cyan:#18b7c4;
-    --teal:#35b89f;
+    --bg: #f5f5f7;
+    --surface: rgba(255,255,255,0.72);
+    --surface-solid: #ffffff;
 
-    --bg:#f8fcfe;
-    --surface:#ffffff;
-    --surface-2:#f0f8fb;
+    --text: #1d1d1f;
+    --secondary: #6e6e73;
 
-    --text:#102f4a;
-    --text-soft:#607487;
+    --border: rgba(0,0,0,0.08);
 
-    --border:rgba(7,59,107,.10);
+    --accent: #0071e3;
+    --accent-hover: #0077ed;
 
     --shadow:
-        0 20px 60px rgba(5,55,85,.09);
+        0 10px 35px rgba(0,0,0,0.08);
 
-    --shadow-small:
-        0 10px 30px rgba(5,55,85,.07);
+    --radius-large: 28px;
+    --radius-medium: 20px;
+    --radius-small: 14px;
 
-    --hero-glow:
-        rgba(24,183,196,.16);
+    --nav-height: 64px;
 
-    --radius:22px;
-
-    --ease:
-        cubic-bezier(.2,.8,.2,1);
-
+    --transition:
+        0.35s cubic-bezier(.2,.8,.2,1);
 }
 
 
-/* =====================================================
-   DARK MODE
-===================================================== */
+/* DARK MODE */
 
-body.dark{
+[data-theme="dark"] {
 
-    --primary:#67d7e1;
-    --primary-2:#42bfe0;
-    --cyan:#55d9df;
-    --teal:#5bd4b9;
+    --bg: #000000;
 
-    --bg:#07151f;
-    --surface:#0c202d;
-    --surface-2:#102b3a;
+    --surface:
+        rgba(28,28,30,0.72);
 
-    --text:#edf9fc;
-    --text-soft:#9db6c5;
+    --surface-solid:
+        #1c1c1e;
 
-    --border:rgba(157,220,232,.12);
+    --text:
+        #f5f5f7;
+
+    --secondary:
+        #98989d;
+
+    --border:
+        rgba(255,255,255,0.10);
+
+    --accent:
+        #2997ff;
+
+    --accent-hover:
+        #4aa8ff;
 
     --shadow:
-        0 25px 70px rgba(0,0,0,.30);
-
-    --shadow-small:
-        0 12px 35px rgba(0,0,0,.22);
-
-    --hero-glow:
-        rgba(24,183,196,.13);
-
+        0 10px 40px rgba(0,0,0,0.45);
 }
 
 
-/* =====================================================
+/* =========================================================
    RESET
-===================================================== */
+   ========================================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
+body {
 
-    font-family:"Inter",sans-serif;
+    margin: 0;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
 
     background:
-        linear-gradient(
-            180deg,
-            var(--bg),
-            var(--bg)
-        );
+        var(--bg);
 
-    color:var(--text);
-
-    overflow-x:hidden;
+    color:
+        var(--text);
 
     transition:
-        background .4s ease,
-        color .4s ease;
+        background var(--transition),
+        color var(--transition);
+
+    min-height: 100vh;
 }
 
-body,
-button,
-a,
-div,
-section,
-header,
-footer{
 
-    transition:
-        background-color .35s ease,
-        border-color .35s ease,
-        color .35s ease;
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+
+    width:
+        min(1180px, calc(100% - 40px));
+
+    margin:
+        0 auto;
+
 }
 
-button{
-    font-family:inherit;
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav-wrapper {
+
+    position:
+        sticky;
+
+    top:
+        14px;
+
+    z-index:
+        1000;
+
+    padding:
+        0 20px;
+
 }
 
-.container{
 
-    width:min(1160px,92%);
+.nav {
 
-    margin:auto;
-}
+    height:
+        var(--nav-height);
 
-.section{
+    max-width:
+        1180px;
 
-    padding:100px 0;
+    margin:
+        auto;
 
-    position:relative;
-}
+    display:
+        flex;
 
-.section-label{
+    align-items:
+        center;
 
-    display:inline-flex;
+    justify-content:
+        space-between;
 
-    align-items:center;
-
-    gap:9px;
-
-    font-size:11px;
-
-    letter-spacing:1.6px;
-
-    text-transform:uppercase;
-
-    font-weight:700;
-
-    color:var(--primary);
-
-    margin-bottom:15px;
-}
-
-.section-label::before{
-
-    content:"";
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
+    padding:
+        0 18px;
 
     background:
-        linear-gradient(
-            135deg,
-            var(--cyan),
-            var(--teal)
-        );
-
-    box-shadow:
-        0 0 0 5px
-        rgba(24,183,196,.10);
-}
-
-
-/* =====================================================
-   TYPOGRAPHY
-===================================================== */
-
-h1,
-h2,
-h3{
-
-    font-family:"Manrope",sans-serif;
-
-    letter-spacing:-.8px;
-}
-
-.section-title{
-
-    font-size:
-        clamp(34px,4vw,52px);
-
-    line-height:1.12;
-
-    font-weight:800;
-
-    color:var(--text);
-
-    max-width:800px;
-
-    margin-bottom:18px;
-}
-
-.section-title span{
-
-    color:var(--primary-2);
-}
-
-.section-description{
-
-    max-width:700px;
-
-    font-size:16px;
-
-    line-height:1.75;
-
-    color:var(--text-soft);
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-header{
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-
-    z-index:1000;
-
-    background:
-        rgba(248,252,254,.78);
+        var(--surface);
 
     backdrop-filter:
-        blur(18px);
-
-    border-bottom:
-        1px solid var(--border);
-}
-
-body.dark header{
-
-    background:
-        rgba(7,21,31,.78);
-}
-
-header.scrolled{
-
-    box-shadow:
-        0 8px 35px rgba(0,0,0,.06);
-}
-
-.nav{
-
-    min-height:74px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:25px;
-}
-
-
-/* =====================================================
-   LOGO
-===================================================== */
-
-.logo{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    font-family:"Manrope",sans-serif;
-
-    font-size:20px;
-
-    font-weight:800;
-
-    color:var(--text);
-
-    white-space:nowrap;
-}
-
-.logo-mark{
-
-    width:39px;
-    height:39px;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:12px;
-
-    color:white;
-
-    font-size:12px;
-
-    font-weight:800;
-
-    background:
-        linear-gradient(
-            135deg,
-            #075985,
-            #087fc4,
-            #18b7c4
-        );
-
-    box-shadow:
-        0 8px 20px
-        rgba(8,127,196,.25);
-}
-
-.logo span{
-    color:var(--primary-2);
-}
-
-.logo small{
-
-    display:block;
-
-    font-size:7px;
-
-    letter-spacing:2.2px;
-
-    color:var(--text-soft);
-
-    font-weight:600;
-
-    margin-top:1px;
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-.nav-links{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:26px;
-}
-
-.nav-links a{
-
-    font-size:12px;
-
-    font-weight:600;
-
-    color:var(--text-soft);
-
-    position:relative;
-}
-
-.nav-links a:not(.nav-cta)::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    bottom:-6px;
-
-    width:0;
-    height:2px;
-
-    background:var(--cyan);
-
-    transition:.3s;
-}
-
-.nav-links a:hover{
-
-    color:var(--primary-2);
-}
-
-.nav-links a:hover::after{
-
-    width:100%;
-}
-
-
-/* =====================================================
-   THEME TOGGLE
-===================================================== */
-
-.theme-toggle{
-
-    width:47px;
-    height:27px;
-
-    border-radius:100px;
-
-    border:1px solid var(--border);
-
-    background:var(--surface);
-
-    cursor:pointer;
-
-    padding:3px;
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    box-shadow:var(--shadow-small);
-}
-
-.theme-toggle::before{
-
-    content:"☀";
-
-    width:21px;
-    height:21px;
-
-    border-radius:50%;
-
-    display:grid;
-
-    place-items:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #eaf9fc,
-            #d9f3f7
-        );
-
-    color:#087fc4;
-
-    font-size:11px;
-
-    transform:translateX(0);
-
-    transition:
-        transform .35s var(--ease);
-}
-
-body.dark .theme-toggle::before{
-
-    content:"☾";
-
-    transform:translateX(20px);
-
-    background:#163746;
-
-    color:#69dce4;
-}
-
-
-/* NAV CTA */
-
-.nav-cta{
-
-    padding:10px 17px;
-
-    border-radius:100px;
-
-    color:white !important;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary-2)
-        );
-
-    box-shadow:
-        0 8px 20px
-        rgba(8,127,196,.18);
-}
-
-.nav-cta:hover{
-
-    transform:translateY(-2px);
-}
-
-
-/* MOBILE */
-
-.menu-btn{
-
-    display:none;
-
-    background:none;
-
-    border:0;
-
-    font-size:25px;
-
-    color:var(--text);
-
-    cursor:pointer;
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-
-    min-height:100vh;
-
-    padding:
-        145px 0
-        80px;
-
-    display:flex;
-
-    align-items:center;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at 85% 20%,
-            var(--hero-glow),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 10% 90%,
-            rgba(8,127,196,.08),
-            transparent 28%
-        );
-}
-
-
-/* GRID BACKGROUND */
-
-.hero-grid-bg{
-
-    position:absolute;
-
-    inset:0;
-
-    opacity:.35;
-
-    background-image:
-
-        linear-gradient(
-            rgba(8,127,196,.045) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(8,127,196,.045) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        55px 55px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 80%
-        );
-
-    pointer-events:none;
-}
-
-
-/* GLOW ORBS */
-
-.orb{
-
-    position:absolute;
-
-    border-radius:50%;
-
-    filter:blur(1px);
-
-    pointer-events:none;
-}
-
-.orb-1{
-
-    width:330px;
-    height:330px;
-
-    right:-130px;
-    top:90px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(24,183,196,.20),
-            transparent 70%
-        );
-
-    animation:
-        orbMove 9s ease-in-out infinite;
-}
-
-.orb-2{
-
-    width:240px;
-    height:240px;
-
-    left:-100px;
-    bottom:30px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(8,127,196,.14),
-            transparent 70%
-        );
-
-    animation:
-        orbMove 11s ease-in-out infinite reverse;
-}
-
-@keyframes orbMove{
-
-    0%,100%{
-        transform:translate(0,0);
-    }
-
-    50%{
-        transform:translate(15px,-25px);
-    }
-}
-
-
-.hero-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        1.02fr .98fr;
-
-    gap:65px;
-
-    align-items:center;
-
-    position:relative;
-
-    z-index:2;
-}
-
-
-/* HERO COPY */
-
-.hero h1{
-
-    font-size:
-        clamp(43px,5.1vw,65px);
-
-    line-height:1.06;
-
-    font-weight:800;
-
-    color:var(--text);
-
-    max-width:680px;
-
-    margin-bottom:22px;
-}
-
-.hero h1 span{
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--primary-2),
-            var(--cyan)
-        );
-
-    -webkit-background-clip:text;
-
-    background-clip:text;
-
-    color:transparent;
-}
-
-.hero-copy{
-
-    color:var(--text-soft);
-
-    font-size:17px;
-
-    line-height:1.75;
-
-    max-width:650px;
-
-    margin-bottom:30px;
-}
-
-.hero-copy strong{
-
-    color:var(--text);
-}
-
-
-/* HERO ACTIONS */
-
-.hero-actions{
-
-    display:flex;
-
-    gap:12px;
-
-    flex-wrap:wrap;
-}
-
-.btn{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:8px;
-
-    padding:13px 20px;
-
-    border-radius:100px;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    border:1px solid transparent;
-
-    transition:
-        transform .3s var(--ease),
-        box-shadow .3s ease,
-        background .3s ease;
-}
-
-.btn:hover{
-
-    transform:translateY(-3px);
-}
-
-.btn-primary{
-
-    color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary-2)
-        );
-
-    box-shadow:
-        0 12px 28px
-        rgba(8,127,196,.20);
-}
-
-.btn-primary:hover{
-
-    box-shadow:
-        0 18px 35px
-        rgba(8,127,196,.27);
-}
-
-.btn-outline{
-
-    color:var(--text);
-
-    background:var(--surface);
-
-    border-color:var(--border);
-
-    box-shadow:var(--shadow-small);
-}
-
-.btn-whatsapp{
-
-    color:#08785f;
-
-    background:#e7faf4;
-
-    border-color:#c7eee2;
-}
-
-body.dark .btn-whatsapp{
-
-    color:#66dfbf;
-
-    background:#102e2a;
-
-    border-color:#1d4d44;
-}
-
-
-/* TRUST */
-
-.hero-trust{
-
-    margin-top:30px;
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:18px;
-}
-
-.trust-item{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:7px;
-
-    color:var(--text-soft);
-
-    font-size:10px;
-
-    font-weight:600;
-}
-
-.trust-dot{
-
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:var(--teal);
-}
-
-
-/* =====================================================
-   HERO VISUAL
-===================================================== */
-
-.hero-visual{
-
-    min-height:500px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    position:relative;
-}
-
-
-/* DEVICE */
-
-.device{
-
-    width:min(510px,100%);
-
-    border-radius:22px;
-
-    overflow:hidden;
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    box-shadow:
-        0 35px 90px rgba(5,55,85,.17);
-
-    transform:
-        perspective(1100px)
-        rotateY(-5deg)
-        rotateX(2deg);
-
-    animation:
-        deviceFloat 7s ease-in-out infinite;
-
-    transition:
-        transform .5s var(--ease);
-}
-
-.device:hover{
-
-    transform:
-        perspective(1100px)
-        rotateY(0)
-        rotateX(0)
-        translateY(-8px);
-}
-
-@keyframes deviceFloat{
-
-    0%,100%{
-        transform:
-            perspective(1100px)
-            rotateY(-5deg)
-            rotateX(2deg)
-            translateY(0);
-    }
-
-    50%{
-        transform:
-            perspective(1100px)
-            rotateY(-3deg)
-            rotateX(2deg)
-            translateY(-12px);
-    }
-}
-
-.device-top{
-
-    height:40px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    padding:0 14px;
-
-    background:
-        var(--surface-2);
-
-    border-bottom:
-        1px solid var(--border);
-}
-
-.device-dot{
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#9cb1be;
-}
-
-.device-address{
-
-    margin-left:8px;
-
-    flex:1;
-
-    height:21px;
-
-    border-radius:6px;
-
-    display:flex;
-
-    align-items:center;
-
-    padding-left:10px;
-
-    font-size:8px;
-
-    color:var(--text-soft);
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-}
-
-.device-screen{
-
-    min-height:375px;
-
-    padding:27px;
-
-    background:
-        radial-gradient(
-            circle at 90% 10%,
-            rgba(24,183,196,.12),
-            transparent 25%
-        ),
-        linear-gradient(
-            135deg,
-            var(--surface),
-            var(--surface-2)
-        );
-}
-
-.mock-nav{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:48px;
-}
-
-.mock-logo{
-
-    font-family:"Manrope",sans-serif;
-
-    font-size:15px;
-
-    font-weight:800;
-
-    color:var(--text);
-}
-
-.mock-links{
-
-    display:flex;
-
-    gap:13px;
-
-    align-items:center;
-
-    color:var(--text-soft);
-
-    font-size:7px;
-}
-
-.mock-book{
-
-    padding:7px 10px;
-
-    border-radius:5px;
-
-    color:white;
-
-    background:var(--primary);
-}
-
-.mock-title{
-
-    font-family:"Manrope",sans-serif;
-
-    font-size:31px;
-
-    line-height:1.12;
-
-    font-weight:800;
-
-    max-width:350px;
-
-    color:var(--text);
-
-    margin-bottom:12px;
-}
-
-.mock-title span{
-
-    color:var(--primary-2);
-}
-
-.mock-description{
-
-    max-width:320px;
-
-    font-size:9px;
-
-    line-height:1.65;
-
-    color:var(--text-soft);
-
-    margin-bottom:18px;
-}
-
-.mock-buttons{
-
-    display:flex;
-
-    gap:7px;
-}
-
-.mock-button{
-
-    padding:9px 12px;
-
-    font-size:7px;
-
-    border-radius:6px;
-
-    color:white;
-
-    background:var(--primary-2);
-}
-
-.mock-button.alt{
-
-    color:var(--text);
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-}
-
-
-/* =====================================================
-   FLOATING CARDS
-===================================================== */
-
-.float-card{
-
-    position:absolute;
-
-    background:
-        color-mix(
-            in srgb,
-            var(--surface) 88%,
-            transparent
-        );
-
-    backdrop-filter:blur(16px);
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    padding:13px;
-
-    box-shadow:
-        0 18px 45px rgba(5,55,85,.12);
-
-    z-index:4;
-
-    animation:
-        floatSmall 5.5s ease-in-out infinite;
-}
-
-@keyframes floatSmall{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-9px);
-    }
-}
-
-.float-portal{
-
-    left:-15px;
-
-    top:65px;
-}
-
-.float-social{
-
-    right:-10px;
-
-    bottom:65px;
-
-    animation-delay:1.2s;
-}
-
-.float-row{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:9px;
-}
-
-.float-icon{
-
-    width:37px;
-    height:37px;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e8f8fc,
-            #e6faf4
-        );
-
-    color:var(--primary-2);
-
-    font-weight:800;
-
-    font-size:14px;
-}
-
-.float-title{
-
-    font-size:10px;
-
-    font-weight:700;
-
-    color:var(--text);
-}
-
-.float-sub{
-
-    font-size:8px;
-
-    color:var(--text-soft);
-
-    margin-top:2px;
-}
-
-
-/* =====================================================
-   ECOSYSTEM
-===================================================== */
-
-.ecosystem{
-
-    background:
-        linear-gradient(
-            180deg,
-            var(--bg),
-            var(--surface-2)
-        );
-}
-
-.eco-grid{
-
-    margin-top:50px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
-}
-
-.eco-card{
-
-    position:relative;
-
-    padding:30px;
-
-    border-radius:var(--radius);
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    overflow:hidden;
-
-    box-shadow:var(--shadow-small);
-
-    transition:
-        transform .4s var(--ease),
-        box-shadow .4s ease;
-}
-
-.eco-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:130px;
-    height:130px;
-
-    right:-60px;
-    top:-60px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(24,183,196,.13),
-            transparent 70%
-        );
-}
-
-.eco-card:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:var(--shadow);
-}
-
-.eco-icon{
-
-    width:52px;
-    height:52px;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e6f8fc,
-            #e8faf5
-        );
-
-    color:var(--primary-2);
-
-    font-size:20px;
-
-    margin-bottom:20px;
-}
-
-.eco-card h3{
-
-    font-size:21px;
-
-    margin-bottom:9px;
-
-    color:var(--text);
-}
-
-.eco-card p{
-
-    font-size:13px;
-
-    line-height:1.65;
-
-    color:var(--text-soft);
-
-    margin-bottom:18px;
-}
-
-.eco-list{
-
-    list-style:none;
-
-    display:grid;
-
-    gap:9px;
-}
-
-.eco-list li{
-
-    display:flex;
-
-    gap:8px;
-
-    font-size:11px;
-
-    color:var(--text-soft);
-}
-
-.eco-list li::before{
-
-    content:"✓";
-
-    color:var(--teal);
-
-    font-weight:800;
-}
-
-
-/* =====================================================
-   PRICING
-===================================================== */
-
-.plans{
-
-    background:var(--surface);
-}
-
-.plans-head{
-
-    display:flex;
-
-    align-items:end;
-
-    justify-content:space-between;
-
-    gap:30px;
-
-    margin-bottom:45px;
-}
-
-.plans-note{
-
-    max-width:340px;
-
-    font-size:12px;
-
-    line-height:1.7;
-
-    color:var(--text-soft);
-}
-
-.plan-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
-}
-
-.plan{
-
-    position:relative;
-
-    padding:30px;
-
-    border-radius:25px;
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    box-shadow:var(--shadow-small);
-
-    transition:
-        transform .4s var(--ease),
-        box-shadow .4s ease;
-}
-
-.plan:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:var(--shadow);
-}
-
-.plan.popular{
+        blur(25px)
+        saturate(180%);
+
+    -webkit-backdrop-filter:
+        blur(25px)
+        saturate(180%);
 
     border:
-        1.5px solid
-        rgba(8,127,196,.40);
+        1px solid var(--border);
 
-    background:
-        linear-gradient(
-            180deg,
-            var(--surface-2),
-            var(--surface)
-        );
-}
-
-.popular-label{
-
-    position:absolute;
-
-    top:-12px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    padding:6px 14px;
-
-    border-radius:100px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--primary-2),
-            var(--cyan)
-        );
-
-    color:white;
-
-    font-size:9px;
-
-    font-weight:800;
-
-    letter-spacing:.7px;
-}
-
-.plan h3{
-
-    font-size:23px;
-
-    color:var(--text);
-
-    margin-bottom:6px;
-}
-
-.plan-sub{
-
-    color:var(--text-soft);
-
-    font-size:11px;
-
-    line-height:1.5;
-
-    min-height:36px;
-}
-
-.price{
-
-    font-family:"Manrope",sans-serif;
-
-    font-size:34px;
-
-    font-weight:800;
-
-    color:var(--text);
-
-    margin:21px 0;
-}
-
-.price small{
-
-    font-family:"Inter",sans-serif;
-
-    font-size:10px;
-
-    font-weight:500;
-
-    color:var(--text-soft);
-}
-
-.plan-divider{
-
-    height:1px;
-
-    background:var(--border);
-
-    margin-bottom:20px;
-}
-
-.plan-features{
-
-    list-style:none;
-
-    display:grid;
-
-    gap:10px;
-
-    margin-bottom:25px;
-}
-
-.plan-features li{
-
-    display:flex;
-
-    gap:9px;
-
-    font-size:11px;
-
-    color:var(--text-soft);
-
-    line-height:1.45;
-}
-
-.plan-features li::before{
-
-    content:"✓";
-
-    width:17px;
-    height:17px;
-
-    flex:none;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:50%;
-
-    background:#e7faf4;
-
-    color:#0b9278;
-
-    font-size:9px;
-
-    font-weight:900;
-}
-
-.plan .btn{
-
-    width:100%;
-}
-
-
-/* =====================================================
-   PORTAL
-===================================================== */
-
-.portal-section{
-
-    background:
-        linear-gradient(
-            135deg,
-            #063653,
-            #075985,
-            #087fa7
-        );
-
-    color:white;
-
-    overflow:hidden;
-}
-
-.portal-section::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:550px;
-    height:550px;
-
-    right:-230px;
-    top:-250px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(48,211,219,.30),
-            transparent 68%
-        );
-
-    animation:
-        orbMove 9s infinite;
-}
-
-.portal-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        .95fr 1.05fr;
-
-    gap:60px;
-
-    align-items:center;
-
-    position:relative;
-
-    z-index:2;
-}
-
-.portal-section .section-label{
-
-    color:#75dce1;
-}
-
-.portal-section .section-title{
-
-    color:white;
-}
-
-.portal-section .section-title span{
-
-    color:#6edfe2;
-}
-
-.portal-section .section-description{
-
-    color:#c8dfea;
-}
-
-
-/* BENEFITS */
-
-.portal-benefits{
-
-    margin-top:28px;
-
-    display:grid;
-
-    gap:13px;
-}
-
-.portal-benefit{
-
-    display:flex;
-
-    gap:11px;
-
-    align-items:flex-start;
-}
-
-.portal-benefit-icon{
-
-    width:32px;
-    height:32px;
-
-    flex:none;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:9px;
-
-    background:
-        rgba(255,255,255,.10);
-
-    color:#75e1df;
-
-    font-size:11px;
-}
-
-.portal-benefit strong{
-
-    display:block;
-
-    font-size:12px;
-
-    margin-bottom:3px;
-}
-
-.portal-benefit span{
-
-    display:block;
-
-    color:#bed8e4;
-
-    font-size:10px;
-
-    line-height:1.55;
-}
-
-
-/* PORTAL MOCKUP */
-
-.portal-preview{
-
-    padding:18px;
-
-    border-radius:27px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    backdrop-filter:blur(14px);
+    border-radius:
+        22px;
 
     box-shadow:
-        0 30px 70px rgba(0,0,0,.18);
-}
-
-.portal-inner{
-
-    background:white;
-
-    border-radius:19px;
-
-    overflow:hidden;
-
-    color:#17324a;
-}
-
-.portal-header{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:17px;
-
-    border-bottom:1px solid #edf2f5;
-}
-
-.portal-logo{
-
-    font-family:"Manrope",sans-serif;
-
-    font-weight:800;
-
-    font-size:15px;
-
-    color:#073b68;
-}
-
-.portal-search{
-
-    font-size:8px;
-
-    color:#7f909f;
-
-    padding:7px 10px;
-
-    border-radius:6px;
-
-    background:#f3f7f9;
-}
-
-.doctor-list{
-
-    padding:17px;
-
-    display:grid;
-
-    gap:10px;
-}
-
-.doctor{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:11px;
-
-    border-radius:12px;
-
-    border:1px solid #e8eef2;
-
-    transition:.3s;
-}
-
-.doctor:hover{
-
-    transform:translateX(5px);
-
-    border-color:#b8e5eb;
-}
-
-.doctor-avatar{
-
-    width:39px;
-    height:39px;
-
-    border-radius:50%;
-
-    display:grid;
-
-    place-items:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #dff5fa,
-            #dff5ed
-        );
-
-    color:#087fc4;
-
-    font-size:10px;
-
-    font-weight:800;
-}
-
-.doctor-name{
-
-    font-size:10px;
-
-    font-weight:700;
-
-    color:#12324c;
-}
-
-.doctor-meta{
-
-    font-size:8px;
-
-    color:#8596a3;
-
-    margin-top:2px;
-}
-
-.verified{
-
-    margin-left:auto;
-
-    color:#0a9679;
-
-    font-size:8px;
-
-    font-weight:700;
-}
-
-
-/* =====================================================
-   SOCIAL
-===================================================== */
-
-.social-section{
-
-    background:var(--bg);
-}
-
-.social-grid{
-
-    margin-top:45px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:16px;
-}
-
-.social-card{
-
-    padding:25px;
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    border-radius:20px;
-
-    box-shadow:var(--shadow-small);
+        var(--shadow);
 
     transition:
-        transform .35s var(--ease),
-        box-shadow .35s ease;
+        all var(--transition);
+
 }
 
-.social-card:hover{
 
-    transform:translateY(-7px);
+/* =========================================================
+   LOGO
+   ========================================================= */
 
-    box-shadow:var(--shadow);
+.logo {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    font-weight:
+        650;
+
+    font-size:
+        17px;
+
+    letter-spacing:
+        -0.3px;
+
 }
 
-.social-icon{
 
-    width:43px;
-    height:43px;
+.logo-mark {
 
-    display:grid;
+    width:
+        28px;
 
-    place-items:center;
+    height:
+        28px;
 
-    border-radius:13px;
+    border-radius:
+        9px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     background:
-        linear-gradient(
-            135deg,
-            #e6f8fc,
-            #e8faf5
-        );
+        var(--text);
 
-    color:var(--primary-2);
+    color:
+        var(--bg);
 
-    font-size:18px;
+    font-size:
+        13px;
 
-    margin-bottom:17px;
-}
+    font-weight:
+        700;
 
-.social-card h3{
-
-    font-size:15px;
-
-    color:var(--text);
-
-    margin-bottom:7px;
-}
-
-.social-card p{
-
-    font-size:11px;
-
-    line-height:1.65;
-
-    color:var(--text-soft);
 }
 
 
-/* =====================================================
-   ECOSYSTEM MAP
-===================================================== */
+/* =========================================================
+   DESKTOP MENU
+   ========================================================= */
 
-.ecosystem-map{
+.menu {
 
-    margin-top:45px;
+    display:
+        flex;
 
-    padding:45px;
+    align-items:
+        center;
 
-    border-radius:28px;
+    gap:
+        4px;
 
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    box-shadow:var(--shadow-small);
-
-    position:relative;
-
-    overflow:hidden;
 }
 
-.ecosystem-map::before{
 
-    content:"";
+.menu a {
 
-    position:absolute;
+    padding:
+        9px 13px;
 
-    inset:0;
+    border-radius:
+        12px;
+
+    font-size:
+        14px;
+
+    color:
+        var(--secondary);
+
+    transition:
+        all 0.25s ease;
+
+}
+
+
+.menu a:hover {
 
     background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(24,183,196,.07),
-            transparent 35%
-        );
+        rgba(127,127,127,0.10);
 
-    pointer-events:none;
+    color:
+        var(--text);
+
 }
 
-.map-grid{
 
-    position:relative;
+/* =========================================================
+   RIGHT CONTROLS
+   ========================================================= */
 
-    z-index:2;
+.nav-actions {
 
-    display:grid;
+    display:
+        flex;
 
-    grid-template-columns:
-        1fr 1fr 1fr;
+    align-items:
+        center;
 
-    gap:25px;
+    gap:
+        8px;
 
-    align-items:center;
 }
 
-.map-box{
 
-    padding:27px;
+/* =========================================================
+   SEARCH BUTTON
+   ========================================================= */
 
-    border-radius:20px;
+.search-button {
 
-    background:var(--surface-2);
+    height:
+        38px;
 
-    border:1px solid var(--border);
+    padding:
+        0 13px;
 
-    text-align:center;
+    display:
+        flex;
 
-    transition:.35s var(--ease);
-}
+    align-items:
+        center;
 
-.map-box:hover{
+    gap:
+        8px;
 
-    transform:translateY(-5px);
-
-    box-shadow:var(--shadow-small);
-}
-
-.map-box.center{
+    border:
+        1px solid var(--border);
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(8,127,196,.10),
-            rgba(24,183,196,.09)
-        );
+        rgba(127,127,127,0.08);
 
-    border-color:
-        rgba(24,183,196,.30);
+    color:
+        var(--secondary);
 
-    transform:scale(1.04);
+    border-radius:
+        12px;
+
+    cursor:
+        pointer;
+
+    transition:
+        all 0.25s ease;
+
 }
 
-.map-box.center:hover{
+
+.search-button:hover {
+
+    background:
+        rgba(127,127,127,0.15);
+
+    color:
+        var(--text);
+
+}
+
+
+.search-icon {
+
+    font-size:
+        15px;
+
+}
+
+
+.shortcut {
+
+    font-size:
+        11px;
+
+    padding:
+        3px 5px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        5px;
+
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+
+    width:
+        44px;
+
+    height:
+        38px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(127,127,127,0.08);
+
+    border-radius:
+        12px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    cursor:
+        pointer;
+
+    color:
+        var(--text);
+
+    transition:
+        all 0.25s ease;
+
+}
+
+
+.theme-toggle:hover {
 
     transform:
-        scale(1.04)
-        translateY(-5px);
-}
+        scale(1.05);
 
-.map-icon{
-
-    width:55px;
-    height:55px;
-
-    display:grid;
-
-    place-items:center;
-
-    margin:0 auto 15px;
-
-    border-radius:17px;
-
-    background:var(--surface);
-
-    color:var(--primary-2);
-
-    font-size:20px;
-
-    box-shadow:var(--shadow-small);
-}
-
-.map-box h3{
-
-    font-size:18px;
-
-    color:var(--text);
-
-    margin-bottom:7px;
-}
-
-.map-box p{
-
-    font-size:11px;
-
-    line-height:1.6;
-
-    color:var(--text-soft);
-}
-
-
-
-/* =====================================================
-   DIGITAL VISIBILITY — SOCIAL + GOOGLE
-===================================================== */
-
-.visibility-section{
     background:
-        radial-gradient(
-            circle at 12% 20%,
-            rgba(24,183,196,.10),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 88% 75%,
-            rgba(8,127,196,.08),
-            transparent 30%
-        ),
+        rgba(127,127,127,0.15);
+
+}
+
+
+/* =========================================================
+   MOBILE BUTTON
+   ========================================================= */
+
+.mobile-menu-button {
+
+    display:
+        none;
+
+    width:
+        40px;
+
+    height:
+        38px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(127,127,127,0.08);
+
+    border-radius:
+        12px;
+
+    cursor:
+        pointer;
+
+    color:
+        var(--text);
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+
+    min-height:
+        78vh;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+    padding:
+        100px 0 80px;
+
+}
+
+
+.hero-content {
+
+    max-width:
+        850px;
+
+    margin:
+        auto;
+
+}
+
+
+.eyebrow {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    padding:
+        8px 14px;
+
+    border:
+        1px solid var(--border);
+
+    background:
         var(--surface);
-    overflow:hidden;
+
+    backdrop-filter:
+        blur(15px);
+
+    border-radius:
+        999px;
+
+    font-size:
+        13px;
+
+    color:
+        var(--secondary);
+
+    margin-bottom:
+        25px;
+
 }
 
-.visibility-intro{
-    max-width:780px;
-}
 
-.visibility-dashboard{
-    margin-top:48px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-    align-items:stretch;
-}
+.status-dot {
 
-.visibility-panel{
-    position:relative;
-    overflow:hidden;
-    padding:28px;
-    border-radius:25px;
-    background:var(--surface);
-    border:1px solid var(--border);
-    box-shadow:var(--shadow-small);
-}
+    width:
+        7px;
 
-.visibility-panel::after{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    right:-80px;
-    top:-80px;
-    border-radius:50%;
-    background:radial-gradient(
-        circle,
-        rgba(24,183,196,.14),
-        transparent 70%
-    );
-    pointer-events:none;
-}
+    height:
+        7px;
 
-.visibility-panel h3{
-    font-size:21px;
-    margin-bottom:7px;
-    color:var(--text);
-}
+    border-radius:
+        50%;
 
-.visibility-panel > p{
-    color:var(--text-soft);
-    font-size:11px;
-    line-height:1.65;
-    max-width:430px;
-}
-
-/* Social orbit */
-
-.social-orbit{
-    min-height:350px;
-    margin-top:25px;
-    position:relative;
-    display:grid;
-    place-items:center;
-}
-
-.orbit-ring{
-    position:absolute;
-    width:235px;
-    height:235px;
-    border:1px dashed rgba(24,183,196,.35);
-    border-radius:50%;
-    animation:orbitSpin 18s linear infinite;
-}
-
-.orbit-ring::before,
-.orbit-ring::after{
-    content:"";
-    position:absolute;
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--cyan);
-    box-shadow:0 0 0 6px rgba(24,183,196,.09);
-}
-
-.orbit-ring::before{
-    top:13px;
-    left:38px;
-}
-
-.orbit-ring::after{
-    right:25px;
-    bottom:30px;
-}
-
-@keyframes orbitSpin{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
-}
-
-.social-core{
-    width:112px;
-    height:112px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    text-align:center;
-    padding:15px;
-    color:white;
     background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary-2),
-            var(--cyan)
-        );
+        #34c759;
+
     box-shadow:
-        0 18px 45px rgba(8,127,196,.28),
-        0 0 0 12px rgba(24,183,196,.06);
-    animation:corePulse 3.5s ease-in-out infinite;
-    position:relative;
-    z-index:2;
+        0 0 10px rgba(52,199,89,0.5);
+
 }
 
-.social-core strong{
-    display:block;
-    font-family:"Manrope",sans-serif;
-    font-size:13px;
-}
 
-.social-core span{
-    display:block;
-    font-size:8px;
-    opacity:.85;
-    margin-top:4px;
-}
-
-@keyframes corePulse{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.055);}
-}
-
-.social-node{
-    position:absolute;
-    width:62px;
-    height:62px;
-    border-radius:18px;
-    display:grid;
-    place-items:center;
-    background:var(--surface-2);
-    border:1px solid var(--border);
-    box-shadow:var(--shadow-small);
-    color:var(--primary-2);
-    font-size:18px;
-    font-weight:800;
-    z-index:3;
-    transition:.35s var(--ease);
-}
-
-.social-node:hover{
-    transform:translateY(-7px) scale(1.06);
-    box-shadow:var(--shadow);
-}
-
-.social-node small{
-    display:block;
-    font-size:7px;
-    color:var(--text-soft);
-    margin-top:2px;
-}
-
-.node-instagram{top:10px;left:22px;}
-.node-facebook{top:105px;right:8px;}
-.node-linkedin{bottom:15px;right:48px;}
-.node-youtube{bottom:28px;left:25px;}
-
-.social-spark{
-    position:absolute;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:var(--cyan);
-    animation:sparkFloat 4s ease-in-out infinite;
-}
-
-.spark-1{top:55px;right:105px;}
-.spark-2{bottom:72px;left:105px;animation-delay:1s;}
-.spark-3{top:165px;left:30px;animation-delay:2s;}
-
-@keyframes sparkFloat{
-    0%,100%{transform:translateY(0);opacity:.45;}
-    50%{transform:translateY(-14px);opacity:1;}
-}
-
-/* Google search animation */
-
-.google-stage{
-    margin-top:25px;
-    min-height:350px;
-    position:relative;
-}
-
-.google-search{
-    height:48px;
-    border:1px solid var(--border);
-    border-radius:100px;
-    background:var(--surface);
-    box-shadow:var(--shadow-small);
-    display:flex;
-    align-items:center;
-    gap:11px;
-    padding:0 17px;
-    position:relative;
-    z-index:3;
-}
-
-.google-logo{
-    font-family:Arial,sans-serif;
-    font-weight:800;
-    font-size:18px;
-    letter-spacing:-1px;
-}
-
-.google-logo .g-blue{color:#4285f4;}
-.google-logo .g-red{color:#ea4335;}
-.google-logo .g-yellow{color:#fbbc05;}
-.google-logo .g-green{color:#34a853;}
-
-.google-query{
-    flex:1;
-    color:var(--text);
-    font-size:10px;
-    overflow:hidden;
-    white-space:nowrap;
-}
-
-.google-cursor{
-    display:inline-block;
-    width:1px;
-    height:12px;
-    background:var(--primary-2);
-    vertical-align:middle;
-    animation:blink 1s step-end infinite;
-}
-
-@keyframes blink{
-    50%{opacity:0;}
-}
-
-.search-results{
-    position:relative;
-    margin:14px 10px 0;
-    display:grid;
-    gap:9px;
-}
-
-.search-result{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:12px 14px;
-    box-shadow:0 8px 22px rgba(5,55,85,.05);
-    transform:translateY(15px);
-    opacity:.35;
-    transition:
-        opacity .6s ease,
-        transform .6s var(--ease),
-        border-color .4s ease;
-}
-
-.search-result.active{
-    opacity:1;
-    transform:translateY(0);
-    border-color:rgba(24,183,196,.35);
-}
-
-.search-result-top{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    color:var(--text-soft);
-    font-size:7px;
-    margin-bottom:4px;
-}
-
-.search-result-top span{
-    color:#34a853;
-}
-
-.search-result h4{
-    font-family:"Manrope",sans-serif;
-    color:var(--primary-2);
-    font-size:11px;
-    margin-bottom:4px;
-}
-
-.search-result p{
-    color:var(--text-soft);
-    font-size:8px;
-    line-height:1.45;
-}
-
-.rank-badge{
-    margin-left:auto;
-    min-width:26px;
-    height:22px;
-    border-radius:7px;
-    display:grid;
-    place-items:center;
-    font-size:8px;
-    font-weight:800;
-    color:var(--primary-2);
-    background:rgba(24,183,196,.10);
-}
-
-.google-note{
-    position:absolute;
-    left:50%;
-    bottom:0;
-    transform:translateX(-50%);
-    width:max-content;
-    max-width:90%;
-    padding:9px 13px;
-    border-radius:100px;
-    background:var(--surface-2);
-    border:1px solid var(--border);
-    color:var(--text-soft);
-    font-size:8px;
-    text-align:center;
-}
-
-.visibility-flow{
-    margin-top:24px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-}
-
-.flow-chip{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    padding:9px 12px;
-    border-radius:100px;
-    background:var(--surface-2);
-    border:1px solid var(--border);
-    color:var(--text-soft);
-    font-size:9px;
-    font-weight:700;
-}
-
-.flow-chip strong{
-    color:var(--primary-2);
-}
-
-.flow-arrow{
-    color:var(--cyan);
-    font-weight:800;
-    animation:arrowPulse 1.8s ease-in-out infinite;
-}
-
-@keyframes arrowPulse{
-    0%,100%{transform:translateX(0);opacity:.6;}
-    50%{transform:translateX(4px);opacity:1;}
-}
-
-.visibility-bottom{
-    margin-top:22px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-}
-
-.visibility-mini{
-    padding:15px;
-    border-radius:16px;
-    background:var(--surface-2);
-    border:1px solid var(--border);
-    text-align:center;
-}
-
-.visibility-mini strong{
-    display:block;
-    color:var(--text);
-    font-size:11px;
-    margin-bottom:4px;
-}
-
-.visibility-mini span{
-    display:block;
-    color:var(--text-soft);
-    font-size:8px;
-    line-height:1.5;
-}
-
-/* =====================================================
-   END DIGITAL VISIBILITY
-===================================================== */
-
-/* =====================================================
-   PROCESS
-===================================================== */
-
-.process{
-
-    background:
-        linear-gradient(
-            180deg,
-            var(--surface),
-            var(--surface-2)
-        );
-}
-
-.process-grid{
-
-    margin-top:50px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:18px;
-
-    position:relative;
-}
-
-.process-grid::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:27px;
-
-    left:11%;
-    right:11%;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--cyan),
-            transparent
-        );
-}
-
-.process-step{
-
-    position:relative;
-
-    z-index:2;
-
-    text-align:center;
-}
-
-.process-number{
-
-    width:55px;
-    height:55px;
+.hero h1 {
 
     margin:
-        0 auto
-        18px;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:50%;
-
-    background:var(--surface);
-
-    border:1.5px solid
-        rgba(24,183,196,.30);
-
-    color:var(--primary-2);
-
-    font-size:11px;
-
-    font-weight:800;
-
-    box-shadow:var(--shadow-small);
-}
-
-.process-step h3{
-
-    font-size:14px;
-
-    color:var(--text);
-
-    margin-bottom:6px;
-}
-
-.process-step p{
-
-    font-size:10px;
-
-    color:var(--text-soft);
-
-    line-height:1.6;
-}
-
-
-/* =====================================================
-   WHY US
-===================================================== */
-
-.why-grid{
-
-    margin-top:45px;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:16px;
-}
-
-.why-card{
-
-    display:flex;
-
-    gap:16px;
-
-    padding:27px;
-
-    border-radius:20px;
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    transition:.35s var(--ease);
-}
-
-.why-card:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:var(--shadow-small);
-}
-
-.why-icon{
-
-    flex:none;
-
-    width:45px;
-    height:45px;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:13px;
-
-    background:#e7f8fc;
-
-    color:var(--primary-2);
-}
-
-.why-card h3{
-
-    font-size:14px;
-
-    color:var(--text);
-
-    margin-bottom:6px;
-}
-
-.why-card p{
-
-    font-size:11px;
-
-    color:var(--text-soft);
-
-    line-height:1.6;
-}
-
-
-/* =====================================================
-   FAQ
-===================================================== */
-
-.faq{
-
-    max-width:800px;
-
-    margin:
-        45px auto
         0;
+
+    font-size:
+        clamp(48px, 8vw, 92px);
+
+    line-height:
+        0.98;
+
+    letter-spacing:
+        -5px;
+
+    font-weight:
+        700;
+
 }
 
-.faq-item{
+
+.hero h1 span {
+
+    color:
+        var(--secondary);
+
+}
+
+
+.hero p {
+
+    max-width:
+        650px;
+
+    margin:
+        30px auto;
+
+    font-size:
+        20px;
+
+    line-height:
+        1.55;
+
+    color:
+        var(--secondary);
+
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    margin-top:
+        35px;
+
+}
+
+
+.button {
+
+    padding:
+        14px 22px;
+
+    border-radius:
+        999px;
+
+    border:
+        1px solid var(--border);
+
+    font-size:
+        15px;
+
+    font-weight:
+        600;
+
+    transition:
+        all 0.3s cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+.button:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.button-primary {
+
+    background:
+        var(--accent);
+
+    color:
+        white;
+
+    border-color:
+        transparent;
+
+    box-shadow:
+        0 8px 20px rgba(0,113,227,0.25);
+
+}
+
+
+.button-primary:hover {
+
+    background:
+        var(--accent-hover);
+
+}
+
+
+.button-secondary {
+
+    background:
+        var(--surface);
+
+    backdrop-filter:
+        blur(20px);
+
+}
+
+
+/* =========================================================
+   SEARCH PANEL
+   ========================================================= */
+
+.search-overlay {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        5000;
+
+    display:
+        none;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        center;
+
+    padding-top:
+        120px;
+
+    background:
+        rgba(0,0,0,0.35);
+
+    backdrop-filter:
+        blur(15px);
+
+}
+
+
+.search-overlay.active {
+
+    display:
+        flex;
+
+}
+
+
+.search-panel {
+
+    width:
+        min(680px, calc(100% - 30px));
+
+    background:
+        var(--surface-solid);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        24px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.25);
+
+    overflow:
+        hidden;
+
+    animation:
+        searchOpen .3s ease;
+
+}
+
+
+@keyframes searchOpen {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-20px)
+            scale(.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+.search-input-wrapper {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    padding:
+        18px 20px;
 
     border-bottom:
         1px solid var(--border);
-}
 
-.faq-question{
-
-    width:100%;
-
-    border:0;
-
-    background:none;
-
-    padding:20px 0;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    color:var(--text);
-
-    font-size:13px;
-
-    font-weight:700;
-
-    text-align:left;
-
-    cursor:pointer;
-}
-
-.faq-question span{
-
-    color:var(--primary-2);
-
-    font-size:20px;
-
-    transition:.3s;
-}
-
-.faq-item.active
-.faq-question span{
-
-    transform:rotate(45deg);
-}
-
-.faq-answer{
-
-    max-height:0;
-
-    overflow:hidden;
-
-    transition:
-        max-height .4s ease;
-}
-
-.faq-answer-inner{
-
-    padding:
-        0 0 18px;
-
-    color:var(--text-soft);
-
-    font-size:11px;
-
-    line-height:1.7;
 }
 
 
-/* =====================================================
-   CTA
-===================================================== */
+.search-input {
 
-.final-cta{
+    flex:
+        1;
 
-    padding:
-        90px 0
-        105px;
+    border:
+        none;
 
-    background:var(--bg);
-}
-
-.cta-box{
-
-    position:relative;
-
-    overflow:hidden;
-
-    padding:55px;
-
-    border-radius:30px;
-
-    color:white;
+    outline:
+        none;
 
     background:
-        linear-gradient(
-            135deg,
-            #063653,
-            #075985,
-            #087fa7
-        );
+        transparent;
 
-    box-shadow:
-        0 30px 75px
-        rgba(7,59,107,.20);
-}
-
-.cta-box::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:380px;
-    height:380px;
-
-    right:-170px;
-    top:-190px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(61,221,224,.35),
-            transparent 65%
-        );
-
-    animation:
-        orbMove 8s infinite;
-}
-
-.cta-content{
-
-    position:relative;
-
-    z-index:2;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:35px;
-}
-
-.cta-box h2{
+    color:
+        var(--text);
 
     font-size:
-        clamp(30px,4vw,45px);
+        18px;
 
-    line-height:1.1;
-
-    margin-bottom:10px;
-}
-
-.cta-box p{
-
-    max-width:600px;
-
-    color:#c9e0eb;
-
-    font-size:13px;
-
-    line-height:1.65;
-}
-
-.cta-actions{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:9px;
-
-    min-width:205px;
-}
-
-.cta-actions .btn-primary{
-
-    background:white;
-
-    color:#063653;
-}
-
-.cta-actions .btn-whatsapp{
-
-    background:
-        rgba(255,255,255,.10);
-
-    color:white;
-
-    border-color:
-        rgba(255,255,255,.20);
 }
 
 
-/* =====================================================
-   FOOTER
-===================================================== */
+.search-results {
 
-footer{
+    max-height:
+        400px;
 
-    background:#052c45;
+    overflow:
+        auto;
 
-    color:white;
-
-    padding:40px 0 22px;
 }
 
-.footer-grid{
 
-    display:flex;
+.search-result {
 
-    justify-content:space-between;
+    display:
+        block;
 
-    gap:35px;
-
-    padding-bottom:28px;
+    padding:
+        16px 20px;
 
     border-bottom:
-        1px solid
-        rgba(255,255,255,.10);
-}
-
-.footer-logo{
-
-    font-family:"Manrope",sans-serif;
-
-    font-size:20px;
-
-    font-weight:800;
-
-    margin-bottom:9px;
-}
-
-.footer-brand p{
-
-    max-width:360px;
-
-    color:#a9c2d0;
-
-    font-size:10px;
-
-    line-height:1.7;
-}
-
-.footer-links{
-
-    display:flex;
-
-    gap:25px;
-
-    flex-wrap:wrap;
-
-    align-content:flex-start;
-}
-
-.footer-links a{
-
-    color:#bdd1dc;
-
-    font-size:10px;
-}
-
-.footer-links a:hover{
-
-    color:white;
-}
-
-.footer-bottom{
-
-    padding-top:18px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    color:#89a8b8;
-
-    font-size:9px;
-}
-
-
-/* =====================================================
-   FLOATING WHATSAPP
-===================================================== */
-
-.whatsapp-float{
-
-    position:fixed;
-
-    right:20px;
-    bottom:20px;
-
-    width:55px;
-    height:55px;
-
-    border-radius:50%;
-
-    display:grid;
-
-    place-items:center;
-
-    background:#18b77b;
-
-    color:white;
-
-    font-size:21px;
-
-    z-index:950;
-
-    box-shadow:
-        0 12px 30px
-        rgba(24,183,123,.32);
-
-    animation:
-        whatsappPulse 3s infinite;
-}
-
-@keyframes whatsappPulse{
-
-    0%,100%{
-
-        box-shadow:
-            0 12px 30px
-            rgba(24,183,123,.30);
-    }
-
-    50%{
-
-        box-shadow:
-            0 12px 35px
-            rgba(24,183,123,.45),
-            0 0 0 9px
-            rgba(24,183,123,.07);
-    }
-}
-
-.whatsapp-svg{
-    width:25px;
-    height:25px;
-    display:block;
-}
-
-.whatsapp-tooltip{
-
-    position:absolute;
-
-    right:68px;
-
-    white-space:nowrap;
-
-    padding:8px 11px;
-
-    border-radius:7px;
-
-    color:white;
-
-    background:#12324a;
-
-    font-size:9px;
-
-    opacity:0;
-
-    transform:translateX(8px);
-
-    pointer-events:none;
-
-    transition:.3s;
-}
-
-.whatsapp-float:hover
-.whatsapp-tooltip{
-
-    opacity:1;
-
-    transform:translateX(0);
-}
-
-
-/* =====================================================
-   REVEAL
-===================================================== */
-
-.reveal{
-
-    opacity:0;
-
-    transform:translateY(25px);
+        1px solid var(--border);
 
     transition:
-        opacity .75s ease,
-        transform .75s var(--ease);
-}
+        background .2s ease;
 
-.reveal.visible{
-
-    opacity:1;
-
-    transform:translateY(0);
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+.search-result:hover {
 
-@media(max-width:1050px){
+    background:
+        rgba(127,127,127,.08);
 
-    .hero-grid{
+}
 
-        grid-template-columns:1fr;
 
-        text-align:center;
+.search-result-title {
 
-        gap:40px;
+    font-weight:
+        600;
+
+}
+
+
+.search-result-description {
+
+    margin-top:
+        4px;
+
+    color:
+        var(--secondary);
+
+    font-size:
+        13px;
+
+}
+
+
+/* =========================================================
+   CONTENT CARDS
+   ========================================================= */
+
+.section {
+
+    padding:
+        100px 0;
+
+}
+
+
+.section-heading {
+
+    text-align:
+        center;
+
+    max-width:
+        650px;
+
+    margin:
+        0 auto 50px;
+
+}
+
+
+.section-heading h2 {
+
+    margin:
+        0 0 15px;
+
+    font-size:
+        clamp(34px, 5vw, 55px);
+
+    letter-spacing:
+        -2px;
+
+}
+
+
+.section-heading p {
+
+    color:
+        var(--secondary);
+
+    font-size:
+        17px;
+
+    line-height:
+        1.5;
+
+}
+
+
+.cards {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        18px;
+
+}
+
+
+.card {
+
+    padding:
+        30px;
+
+    min-height:
+        220px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--surface);
+
+    backdrop-filter:
+        blur(25px);
+
+    border-radius:
+        var(--radius-large);
+
+    transition:
+        all .35s cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.card-icon {
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border-radius:
+        15px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        rgba(127,127,127,.10);
+
+    margin-bottom:
+        25px;
+
+    font-size:
+        20px;
+
+}
+
+
+.card h3 {
+
+    margin:
+        0 0 10px;
+
+    font-size:
+        20px;
+
+}
+
+
+.card p {
+
+    margin:
+        0;
+
+    color:
+        var(--secondary);
+
+    line-height:
+        1.55;
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+
+    margin-top:
+        80px;
+
+    padding:
+        60px 0 30px;
+
+    border-top:
+        1px solid var(--border);
+
+    color:
+        var(--secondary);
+
+}
+
+
+.footer-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 1fr;
+
+    gap:
+        40px;
+
+}
+
+
+.footer-column {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
+}
+
+
+.footer-title {
+
+    color:
+        var(--text);
+
+    font-weight:
+        600;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.footer-column a:hover {
+
+    color:
+        var(--text);
+
+}
+
+
+.footer-bottom {
+
+    margin-top:
+        50px;
+
+    padding-top:
+        20px;
+
+    border-top:
+        1px solid var(--border);
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    font-size:
+        13px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .menu {
+
+        display:
+            none;
+
+        position:
+            absolute;
+
+        top:
+            70px;
+
+        left:
+            20px;
+
+        right:
+            20px;
+
+        padding:
+            12px;
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        background:
+            var(--surface-solid);
+
+        border:
+            1px solid var(--border);
+
+        border-radius:
+            20px;
+
+        box-shadow:
+            var(--shadow);
+
     }
 
-    .hero-copy{
 
-        margin:auto auto 30px;
+    .menu.active {
+
+        display:
+            flex;
+
     }
 
-    .hero-actions{
 
-        justify-content:center;
+    .menu a {
+
+        padding:
+            14px;
+
     }
 
-    .hero-trust{
 
-        justify-content:center;
+    .mobile-menu-button {
+
+        display:
+            block;
+
     }
 
-    .hero-visual{
 
-        min-height:470px;
+    .search-button {
+
+        display:
+            none;
+
     }
 
-    .portal-grid{
 
-        grid-template-columns:1fr;
+    .hero {
+
+        min-height:
+            70vh;
+
+        padding-top:
+            80px;
+
     }
 
-    .visibility-dashboard{
-        grid-template-columns:1fr;
+
+    .hero h1 {
+
+        letter-spacing:
+            -3px;
+
     }
 
-    .social-grid{
+
+    .hero p {
+
+        font-size:
+            17px;
+
+    }
+
+
+    .hero-buttons {
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+    }
+
+
+    .button {
+
+        width:
+            min(280px, 100%);
+
+    }
+
+
+    .cards {
 
         grid-template-columns:
-            repeat(2,1fr);
+            1fr;
+
     }
 
-    .process-grid{
+
+    .footer-grid {
 
         grid-template-columns:
-            repeat(2,1fr);
+            1fr 1fr;
 
-        gap:40px;
     }
 
-    .process-grid::before{
 
-        display:none;
-    }
+    .footer-bottom {
 
-}
+        flex-direction:
+            column;
 
-
-@media(max-width:850px){
-
-    .nav-links{
-
-        position:absolute;
-
-        left:4%;
-        top:72px;
-
-        width:92%;
-
-        padding:18px;
-
-        background:var(--surface);
-
-        border:1px solid var(--border);
-
-        border-radius:18px;
-
-        box-shadow:var(--shadow);
-
-        flex-direction:column;
-
-        align-items:stretch;
-
-        gap:15px;
-
-        opacity:0;
-
-        pointer-events:none;
-
-        transform:translateY(-10px);
-
-        transition:.3s;
-    }
-
-    .nav-links.active{
-
-        opacity:1;
-
-        pointer-events:auto;
-
-        transform:translateY(0);
-    }
-
-    .nav-links a{
-
-        padding:5px;
-    }
-
-    .nav-cta{
-
-        text-align:center;
-    }
-
-    .menu-btn{
-
-        display:block;
-    }
-
-    .eco-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .plan-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .plans-head{
-
-        display:block;
-    }
-
-    .plans-note{
-
-        margin-top:10px;
-    }
-
-    .why-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .visibility-bottom{
-        grid-template-columns:1fr;
-    }
-
-    .map-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .map-box.center{
-
-        transform:none;
-    }
-
-    .map-box.center:hover{
-
-        transform:translateY(-5px);
-    }
-
-    .cta-content{
-
-        flex-direction:column;
-
-        align-items:flex-start;
     }
 
 }
 
 
-@media(max-width:600px){
+@media (max-width: 500px) {
 
-    .section{
+    .container {
 
-        padding:75px 0;
+        width:
+            min(100% - 28px, 1180px);
+
     }
 
-    .hero{
 
-        padding-top:125px;
+    .nav-wrapper {
+
+        padding:
+            0 10px;
+
     }
 
-    .hero h1{
 
-        font-size:40px;
+    .nav {
 
-        letter-spacing:-1.1px;
+        padding:
+            0 12px;
+
     }
 
-    .hero-copy{
 
-        font-size:15px;
+    .logo {
+
+        font-size:
+            15px;
+
     }
 
-    .hero-visual{
 
-        min-height:380px;
+    .theme-toggle {
+
+        width:
+            38px;
+
     }
 
-    .device{
 
-        animation:none;
+    .hero {
 
-        transform:none;
+        padding:
+            70px 0;
+
     }
 
-    .device:hover{
 
-        transform:translateY(-5px);
+    .hero h1 {
+
+        font-size:
+            48px;
+
     }
 
-    .device-screen{
 
-        min-height:290px;
+    .section {
 
-        padding:20px;
+        padding:
+            70px 0;
+
     }
 
-    .mock-title{
 
-        font-size:24px;
+    .footer-grid {
+
+        grid-template-columns:
+            1fr;
+
     }
 
-    .mock-links{
-
-        display:none;
-    }
-
-    .float-card{
-
-        transform:scale(.82);
-    }
-
-    .float-portal{
-
-        left:-12px;
-
-        top:20px;
-    }
-
-    .float-social{
-
-        right:-12px;
-
-        bottom:15px;
-    }
-
-    .social-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .visibility-panel{
-        padding:22px;
-    }
-
-    .social-orbit,
-    .google-stage{
-        min-height:310px;
-    }
-
-    .orbit-ring{
-        width:205px;
-        height:205px;
-    }
-
-    .social-node{
-        transform:scale(.88);
-    }
-
-    .node-instagram{left:2px;}
-    .node-facebook{right:-4px;}
-    .node-linkedin{right:22px;}
-    .node-youtube{left:4px;}
-
-    .visibility-flow{
-        gap:6px;
-    }
-
-    .flow-arrow{
-        display:none;
-    }
-
-    .process-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .ecosystem-map{
-
-        padding:25px;
-    }
-
-    .cta-box{
-
-        padding:35px 25px;
-
-        border-radius:23px;
-    }
-
-    .footer-grid{
-
-        flex-direction:column;
-    }
-
-    .footer-bottom{
-
-        flex-direction:column;
-
-        gap:7px;
-    }
-
-    .whatsapp-float{
-
-        right:15px;
-        bottom:15px;
-
-        width:52px;
-        height:52px;
-    }
-
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-
-        animation-duration:.01ms !important;
-
-        animation-iteration-count:1 !important;
-
-        scroll-behavior:auto !important;
-
-        transition-duration:.01ms !important;
-    }
-
-}
-
-
-
-/* =====================================================
-   VISIBILITY PANELS — DESKTOP SIDE-BY-SIDE
-===================================================== */
-.visibility-dashboard{
-    display:grid !important;
-    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-    gap:20px !important;
-    align-items:stretch !important;
-}
-
-.visibility-dashboard > .visibility-panel{
-    min-width:0 !important;
-}
-
-@media (max-width:900px){
-    .visibility-dashboard{
-        grid-template-columns:1fr !important;
-    }
 }
 
 </style>
-</head>
 
+</head>
 
 
 <body>
 
 
 <!-- =====================================================
-     HEADER
-===================================================== -->
+     NAVIGATION
+     ===================================================== -->
 
-<header id="header">
+<div class="nav-wrapper">
 
-<div class="container nav">
+<header class="nav">
 
+    <a href="/" class="logo">
 
-<a href="#home" class="logo">
+        <span class="logo-mark">
+            Y
+        </span>
 
-<div class="logo-mark">
-    TC
-</div>
+        <span>
+            Your Website
+        </span>
 
-<div>
-
-    Thomson<span> Clinic <i>for Business</i></span>
-
-    <small>
-        CARE · SCIENCE · ACCESS · FOR ALL
-    </small>
-
-</div>
-
-</a>
+    </a>
 
 
+    <nav class="menu" id="menu">
 
-<nav class="nav-links" id="navLinks">
+        <a href="/">
+            Home
+        </a>
 
-<a href="#websites">
-    Websites
-</a>
+        <a href="#features">
+            Features
+        </a>
 
-<a href="#portal">
-    Doctor Portal
-</a>
+        <a href="#resources">
+            Resources
+        </a>
 
-<a href="#social">
-    Social Presence
-</a>
+        <a href="#about">
+            About
+        </a>
 
-<a href="#visibility">
-    Google Visibility
-</a>
-
-<a href="#process">
-    How It Works
-</a>
-
-<a href="#faq">
-    FAQ
-</a>
+    </nav>
 
 
-<!-- THEME -->
+    <div class="nav-actions">
 
-<button
-    class="theme-toggle"
-    id="themeToggle"
-    aria-label="Toggle dark mode">
-</button>
+        <button
+            class="search-button"
+            id="searchButton">
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+            Search
+
+            <span class="shortcut">
+                ⌘K
+            </span>
+
+        </button>
 
 
-<a href="#contact"
-   class="nav-cta">
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Change theme">
 
-    Talk to Us
+            <span id="themeIcon">
+                ◐
+            </span>
 
-</a>
-
-</nav>
+        </button>
 
 
-<button
-    class="menu-btn"
-    id="menuBtn"
-    aria-label="Open navigation">
+        <button
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open menu">
 
-    ☰
+            ☰
 
-</button>
+        </button>
 
-</div>
+    </div>
 
 </header>
+
+</div>
 
 
 
 <!-- =====================================================
      HERO
-===================================================== -->
+     ===================================================== -->
+
+<main>
+
 
 <section class="hero">
 
-<div class="hero-grid-bg"></div>
+    <div class="container">
 
-<div class="orb orb-1"></div>
+        <div class="hero-content">
 
-<div class="orb orb-2"></div>
+            <div class="eyebrow">
 
+                <span class="status-dot"></span>
 
-<div class="container hero-grid">
+                Welcome to your website
 
+            </div>
 
-<div class="reveal">
 
+            <h1>
 
-<div class="section-label">
-    FOR DOCTORS
-</div>
+                Simple.
+                <span>
+                    Powerful.
+                </span>
 
+            </h1>
 
-<h1>
 
-    Build your
-    <span>professional digital presence.</span>
+            <p>
 
-</h1>
+                A modern website built around a clean
+                macOS-inspired interface, intelligent
+                search and a consistent design system.
 
+            </p>
 
-<p class="hero-copy">
 
-    Create a professional website for your practice,
-    get listed on the <strong>Thomson Clinic doctor portal</strong>
-    and strengthen your social media presence —
-    through one connected digital ecosystem.
+            <div class="hero-buttons">
 
-</p>
+                <a
+                    href="#features"
+                    class="button button-primary">
 
+                    Explore
 
-<div class="hero-actions">
+                </a>
 
 
-<a
-    href="#websites"
-    class="btn btn-primary">
+                <button
+                    class="button button-secondary"
+                    id="heroSearch">
 
-    Explore Website Plans
-    →
+                    Search Website
 
-</a>
+                </button>
 
+            </div>
 
-<a
-    href="#"
-    class="btn btn-whatsapp whatsapp-link"
-    data-message="Hello Thomson Clinic, I am a doctor and I am interested in creating a professional website for my practice. Please share the details.">
+        </div>
 
-    WhatsApp Us
-
-</a>
-
-</div>
-
-
-<div class="hero-trust">
-
-<div class="trust-item">
-    <span class="trust-dot"></span>
-    Designed for doctors
-</div>
-
-<div class="trust-item">
-    <span class="trust-dot"></span>
-    Mobile-first
-</div>
-
-<div class="trust-item">
-    <span class="trust-dot"></span>
-    Professional design
-</div>
-
-<div class="trust-item">
-    <span class="trust-dot"></span>
-    India-wide
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- HERO DEVICE -->
-
-<div class="hero-visual reveal">
-
-
-<div class="device">
-
-
-<div class="device-top">
-
-<span class="device-dot"></span>
-<span class="device-dot"></span>
-<span class="device-dot"></span>
-
-<div class="device-address">
-    yourname.in
-</div>
-
-</div>
-
-
-<div class="device-screen">
-
-
-<div class="mock-nav">
-
-<div class="mock-logo">
-    Dr. Sharma
-</div>
-
-<div class="mock-links">
-
-<span>
-    About
-</span>
-
-<span>
-    Services
-</span>
-
-<span>
-    Articles
-</span>
-
-<span>
-    Contact
-</span>
-
-<span class="mock-book">
-    Appointment
-</span>
-
-</div>
-
-</div>
-
-
-<div class="mock-title">
-
-    A professional
-    <span>digital home</span>
-    for your practice.
-
-</div>
-
-
-<div class="mock-description">
-
-    Present your expertise, services,
-    qualifications and appointment
-    options in a modern and accessible
-    digital experience.
-
-</div>
-
-
-<div class="mock-buttons">
-
-<div class="mock-button">
-    Book Consultation
-</div>
-
-<div class="mock-button alt">
-    Learn More
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- FLOATING PORTAL -->
-
-<div class="float-card float-portal">
-
-<div class="float-row">
-
-<div class="float-icon">
-    ◎
-</div>
-
-<div>
-
-<div class="float-title">
-    YourSite.com live!
-</div>
-
-<div class="float-sub">
-    + listing on Thomson Clinic portal
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- FLOATING SOCIAL -->
-
-<div class="float-card float-social">
-
-<div class="float-row">
-
-<div class="float-icon">
-    ✦
-</div>
-
-<div>
-
-<div class="float-title">
-    Social Presence
-</div>
-
-<div class="float-sub">
-    Build digital trust
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     SOCIAL MEDIA + GOOGLE VISIBILITY
-===================================================== -->
-
-<section
-    class="section visibility-section"
-    id="visibility">
-
-<div class="container">
-
-<div class="visibility-intro reveal">
-
-<div class="section-label">
-    BE FOUND. BE REMEMBERED.
-</div>
-
-<h2 class="section-title">
-
-    From social media
-    <span>to Google search.</span>
-
-</h2>
-
-<p class="section-description">
-
-    A professional website is only the beginning.
-    Your digital presence should help people discover
-    you, recognize you and take the next step.
-    We connect your website, social presence and
-    search-friendly content into one professional
-    digital journey.
-
-</p>
-
-</div>
-
-
-<div class="visibility-dashboard">
-
-
-<!-- GOOGLE PANEL -->
-
-<div class="visibility-panel reveal">
-
-<h3>
-    Help patients <span style="color:var(--primary-2);">find you.</span>
-</h3>
-
-<p>
-    We structure your website and professional content
-    with search visibility in mind — helping search
-    engines understand who you are, what you do and
-    where you practice.
-</p>
-
-
-<div class="google-stage">
-
-<div class="google-search">
-
-<div class="google-logo">
-    <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
-</div>
-
-<div class="google-query">
-    <span id="googleQuery">psychiatrist near me</span>
-    <span class="google-cursor"></span>
-</div>
-
-</div>
-
-
-<div class="search-results">
-
-
-<div class="search-result active">
-
-<div class="search-result-top">
-    yourname.in
-    <span>✓</span>
-    <div class="rank-badge">#1</div>
-</div>
-
-<h4>
-    Dr. Your Name — Psychiatrist
-</h4>
-
-<p>
-    Professional profile · Services · Location ·
-    Consultation information
-</p>
-
-</div>
-
-
-
-<div class="search-result">
-
-<div class="search-result-top">
-    thomsonclinic.com
-    <span>✓</span>
-    <div class="rank-badge">#2</div>
-</div>
-
-<h4>
-    Dr. Your Name | Thomson Clinic
-</h4>
-
-<p>
-    Specialty profile, qualifications and
-    professional information.
-</p>
-
-</div>
-
-
-
-<div class="search-result">
-
-<div class="search-result-top">
-    social profile
-    <span>✓</span>
-    <div class="rank-badge">#3</div>
-</div>
-
-<h4>
-    Dr. Your Name — Professional Profile
-</h4>
-
-<p>
-    Educational content and links back to
-    your professional website.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="google-note">
-    Search visibility is a long-term process — no guaranteed rankings.
-</div>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- SOCIAL MEDIA PANEL -->
-
-<div class="visibility-panel reveal">
-
-<h3>
-    Social media that feels like <span style="color:var(--primary-2);">you.</span>
-</h3>
-
-<p>
-    Build a consistent professional identity across
-    your social channels — so your profile, content
-    and website tell the same story.
-</p>
-
-
-<div class="social-orbit">
-
-<div class="orbit-ring"></div>
-
-<div class="social-core">
-
-<div>
-<strong>
-    Your<br>Professional<br>Brand
-</strong>
-
-<span>
-    One identity · everywhere
-</span>
-</div>
-
-</div>
-
-
-<div class="social-node node-instagram">
-    ◎
-    <small>Instagram</small>
-</div>
-
-<div class="social-node node-facebook">
-    f
-    <small>Facebook</small>
-</div>
-
-<div class="social-node node-linkedin">
-    in
-    <small>LinkedIn</small>
-</div>
-
-<div class="social-node node-youtube">
-    ▶
-    <small>YouTube</small>
-</div>
-
-
-<span class="social-spark spark-1"></span>
-<span class="social-spark spark-2"></span>
-<span class="social-spark spark-3"></span>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-
-
-<div class="visibility-flow reveal">
-
-<div class="flow-chip">
-    <strong>01</strong> Website
-</div>
-
-<div class="flow-arrow">→</div>
-
-<div class="flow-chip">
-    <strong>02</strong> Search
-</div>
-
-<div class="flow-arrow">→</div>
-
-<div class="flow-chip">
-    <strong>03</strong> Social
-</div>
-
-<div class="flow-arrow">→</div>
-
-<div class="flow-chip">
-    <strong>04</strong> Trust
-</div>
-
-<div class="flow-arrow">→</div>
-
-<div class="flow-chip">
-    <strong>05</strong> Enquiry
-</div>
-
-</div>
-
-
-<div class="visibility-bottom">
-
-<div class="visibility-mini reveal">
-
-<strong>
-    Google-ready structure
-</strong>
-
-<span>
-    Search-friendly pages, headings,
-    metadata and local information.
-</span>
-
-</div>
-
-<div class="visibility-mini reveal">
-
-<strong>
-    Local discoverability
-</strong>
-
-<span>
-    Present your specialty and practice
-    location clearly across your ecosystem.
-</span>
-
-</div>
-
-<div class="visibility-mini reveal">
-
-<strong>
-    Connected profiles
-</strong>
-
-<span>
-    Website, portal and social profiles
-    reinforce one professional identity.
-</span>
-
-</div>
-
-</div>
-
-
-<div
-    style="text-align:center;margin-top:32px;"
-    class="reveal">
-
-<a
-    href="#"
-    class="btn btn-primary whatsapp-link"
-    data-message="Hello Thomson Clinic, I am interested in improving my professional social media presence and Google search visibility. Please share the available options.">
-
-    Build My Digital Visibility →
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-
-
-<!-- =====================================================
-     ECOSYSTEM
-===================================================== -->
-
-<section class="section ecosystem">
-
-<div class="container">
-
-
-<div class="reveal">
-
-<div class="section-label">
-    THE THOMSON CLINIC ECOSYSTEM
-</div>
-
-<h2 class="section-title">
-
-    More than a website.
-    <span>A connected presence.</span>
-
-</h2>
-
-<p class="section-description">
-
-    Your website becomes the foundation of your digital
-    identity. Connect it with your Thomson Clinic profile
-    and social channels to create a consistent professional
-    presence across the web.
-
-</p>
-
-</div>
-
-
-
-<div class="eco-grid">
-
-
-<div class="eco-card reveal">
-
-<div class="eco-icon">
-    ◇
-</div>
-
-<h3>
-    Your Website
-</h3>
-
-<p>
-
-    A professional digital home designed
-    around your practice, specialty and
-    professional identity.
-
-</p>
-
-<ul class="eco-list">
-
-<li>
-    Doctor profile
-</li>
-
-<li>
-    Services & specialties
-</li>
-
-<li>
-    Appointment enquiries
-</li>
-
-<li>
-    WhatsApp & call integration
-</li>
-
-<li>
-    Mobile-first design
-</li>
-
-<li>
-    Basic SEO
-</li>
-
-</ul>
-
-</div>
-
-
-
-<div class="eco-card reveal">
-
-<div class="eco-icon">
-    ◎
-</div>
-
-<h3>
-    Thomson Clinic Portal
-</h3>
-
-<p>
-
-    Join the Thomson Clinic doctor network
-    with a <strong>complimentary listing</strong>.
-
-</p>
-
-<ul class="eco-list">
-
-<li>
-    Professional doctor profile
-</li>
-
-<li>
-    Specialty & location
-</li>
-
-<li>
-    Qualifications & credentials
-</li>
-
-<li>
-    Website profile link
-</li>
-
-<li>
-    Patient enquiry pathway
-</li>
-
-<li>
-    No additional listing fee
-</li>
-
-</ul>
-
-</div>
-
-
-
-<div class="eco-card reveal">
-
-<div class="eco-icon">
-    ✦
-</div>
-
-<h3>
-    Social Presence
-</h3>
-
-<p>
-
-    Build a consistent professional identity
-    across your social channels.
-
-</p>
-
-<ul class="eco-list">
-
-<li>
-    Profile optimization
-</li>
-
-<li>
-    Branded post templates
-</li>
-
-<li>
-    Educational content
-</li>
-
-<li>
-    Website integration
-</li>
-
-<li>
-    Professional messaging
-</li>
-
-<li>
-    Optional ongoing support
-</li>
-
-</ul>
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 
 <!-- =====================================================
-     WEBSITE PLANS
-===================================================== -->
-
-<section
-    class="section plans"
-    id="websites">
-
-<div class="container">
-
-
-<div class="plans-head reveal">
-
-<div>
-
-<div class="section-label">
-    WEBSITE PLANS
-</div>
-
-<h2 class="section-title">
-
-    Simple pricing.
-    <span>Professional results.</span>
-
-</h2>
-
-</div>
-
-
-<p class="plans-note">
-
-    Designed for independent doctors and
-    growing practices. Start with what you
-    need and scale later.
-
-</p>
-
-</div>
-
-
-
-<div class="plan-grid">
-
-
-<!-- STARTER -->
-
-<div class="plan reveal">
-
-<h3>
-    Starter
-</h3>
-
-<p class="plan-sub">
-    A clean professional online presence.
-</p>
-
-<div class="price">
-
-    ₹7,999
-
-    <small>
-        one-time
-    </small>
-
-</div>
-
-<div class="plan-divider"></div>
-
-
-<ul class="plan-features">
-
-<li>
-    4–5 page website
-</li>
-
-<li>
-    Professional doctor profile
-</li>
-
-<li>
-    Services / specialties
-</li>
-
-<li>
-    Contact form
-</li>
-
-<li>
-    WhatsApp integration
-</li>
-
-<li>
-    Click-to-call
-</li>
-
-<li>
-    Mobile responsive
-</li>
-
-<li>
-    Basic SEO setup
-</li>
-
-<li>
-    <strong>
-        Complimentary Thomson Clinic listing
-    </strong>
-</li>
-
-</ul>
-
-
-<a
-    href="#"
-    class="btn btn-whatsapp whatsapp-link"
-    data-message="Hello Thomson Clinic, I am interested in the ₹7,999 Starter website package. Please share the details and process.">
-
-    Discuss Starter Plan
-
-</a>
-
-</div>
-
-
-
-<!-- PROFESSIONAL -->
-
-<div class="plan popular reveal">
-
-<div class="popular-label">
-    MOST POPULAR
-</div>
-
-<h3>
-    Professional
-</h3>
-
-<p class="plan-sub">
-    A complete digital foundation for your practice.
-</p>
-
-<div class="price">
-
-    ₹12,999
-
-    <small>
-        one-time
-    </small>
-
-</div>
-
-<div class="plan-divider"></div>
-
-
-<ul class="plan-features">
-
-<li>
-    6–8 page website
-</li>
-
-<li>
-    Custom professional design
-</li>
-
-<li>
-    Detailed service pages
-</li>
-
-<li>
-    Appointment enquiry system
-</li>
-
-<li>
-    WhatsApp + call integration
-</li>
-
-<li>
-    Google Maps integration
-</li>
-
-<li>
-    Blog / resources section
-</li>
-
-<li>
-    Privacy & terms pages
-</li>
-
-<li>
-    Fast mobile experience
-</li>
-
-<li>
-    Basic analytics
-</li>
-
-<li>
-    <strong>
-        Complimentary Thomson Clinic listing
-    </strong>
-</li>
-
-</ul>
-
-
-<a
-    href="#"
-    class="btn btn-primary whatsapp-link"
-    data-message="Hello Thomson Clinic, I am interested in the ₹12,999 Professional website package. Please explain the process and requirements.">
-
-    Start Professional Plan
-
-</a>
-
-</div>
-
-
-
-<!-- PREMIUM -->
-
-<div class="plan reveal">
-
-<h3>
-    Premium
-</h3>
-
-<p class="plan-sub">
-    For established practices and advanced requirements.
-</p>
-
-<div class="price">
-
-    ₹19,999
-
-    <small>
-        one-time
-    </small>
-
-</div>
-
-<div class="plan-divider"></div>
-
-
-<ul class="plan-features">
-
-<li>
-    10+ pages
-</li>
-
-<li>
-    Premium custom design
-</li>
-
-<li>
-    Advanced animations
-</li>
-
-<li>
-    Multiple locations
-</li>
-
-<li>
-    Online consultation integration
-</li>
-
-<li>
-    Blog & resource library
-</li>
-
-<li>
-    Advanced SEO setup
-</li>
-
-<li>
-    Analytics setup
-</li>
-
-<li>
-    Priority support
-</li>
-
-<li>
-    <strong>
-        Complimentary Thomson Clinic listing
-    </strong>
-</li>
-
-</ul>
-
-
-<a
-    href="#"
-    class="btn btn-whatsapp whatsapp-link"
-    data-message="Hello Thomson Clinic, I am interested in the ₹19,999 Premium website package. I would like to discuss my requirements.">
-
-    Discuss Premium Plan
-
-</a>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PORTAL
-===================================================== -->
-
-<section
-    class="section portal-section"
-    id="portal">
-
-<div class="container portal-grid">
-
-
-<div class="reveal">
-
-<div class="section-label">
-    COMPLIMENTARY DOCTOR LISTING
-</div>
-
-
-<h2 class="section-title">
-
-    Be discoverable
-    <span>through Thomson Clinic.</span>
-
-</h2>
-
-
-<p class="section-description">
-
-    Build your website with us and receive
-    a complimentary professional listing on
-    the Thomson Clinic doctor portal.
-
-</p>
-
-
-<div class="portal-benefits">
-
-
-<div class="portal-benefit">
-
-<div class="portal-benefit-icon">
-    ✓
-</div>
-
-<div>
-
-<strong>
-    Professional profile
-</strong>
-
-<span>
-    Showcase your specialty, qualifications,
-    experience and practice information.
-</span>
-
-</div>
-
-</div>
-
-
-
-<div class="portal-benefit">
-
-<div class="portal-benefit-icon">
-    ✓
-</div>
-
-<div>
-
-<strong>
-    Specialty & location visibility
-</strong>
-
-<span>
-    Help relevant users discover doctors
-    based on specialty and location.
-</span>
-
-</div>
-
-</div>
-
-
-
-<div class="portal-benefit">
-
-<div class="portal-benefit-icon">
-    ✓
-</div>
-
-<div>
-
-<strong>
-    Connected digital identity
-</strong>
-
-<span>
-    Link your portal profile with your
-    professional website and contact pathway.
-</span>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- PORTAL UI -->
-
-<div class="portal-preview reveal">
-
-<div class="portal-inner">
-
-
-<div class="portal-header">
-
-<div class="portal-logo">
-    Thomson Clinic
-</div>
-
-<div class="portal-search">
-    Search doctors...
-</div>
-
-</div>
-
-
-<div class="doctor-list">
-
-
-<div class="doctor">
-
-<div class="doctor-avatar">
-    AS
-</div>
-
-<div>
-
-<div class="doctor-name">
-    Dr. A. Sharma
-</div>
-
-<div class="doctor-meta">
-    Psychiatrist · Delhi
-</div>
-
-</div>
-
-<div class="verified">
-    ✓ Verified
-</div>
-
-</div>
-
-
-
-<div class="doctor">
-
-<div class="doctor-avatar">
-    RM
-</div>
-
-<div>
-
-<div class="doctor-name">
-    Dr. R. Mehta
-</div>
-
-<div class="doctor-meta">
-    Psychiatrist · Mumbai
-</div>
-
-</div>
-
-<div class="verified">
-    ✓ Verified
-</div>
-
-</div>
-
-
-
-<div class="doctor">
-
-<div class="doctor-avatar">
-    NK
-</div>
-
-<div>
-
-<div class="doctor-name">
-    Dr. N. Kumar
-</div>
-
-<div class="doctor-meta">
-    Psychiatrist · Bengaluru
-</div>
-
-</div>
-
-<div class="verified">
-    ✓ Verified
-</div>
-
-</div>
-
-
-
-<div class="doctor">
-
-<div class="doctor-avatar">
-    SP
-</div>
-
-<div>
-
-<div class="doctor-name">
-    Dr. S. Patel
-</div>
-
-<div class="doctor-meta">
-    Psychiatrist · Ahmedabad
-</div>
-
-</div>
-
-<div class="verified">
-    ✓ Verified
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SOCIAL MEDIA
-===================================================== -->
-
-<section
-    class="section social-section"
-    id="social">
-
-<div class="container">
-
-
-<div class="reveal">
-
-<div class="section-label">
-    SOCIAL MEDIA PRESENCE
-</div>
-
-<h2 class="section-title">
-
-    Turn expertise into
-    <span>digital trust.</span>
-
-</h2>
-
-<p class="section-description">
-
-    Your professional identity should look consistent
-    wherever patients discover you. We can help create
-    and maintain a credible social presence alongside
-    your website.
-
-</p>
-
-</div>
-
-
-
-<div class="social-grid">
-
-
-<div class="social-card reveal">
-
-<div class="social-icon">
-    ◎
-</div>
-
-<h3>
-    Profile Optimization
-</h3>
-
-<p>
-    Professional bio, profile structure,
-    contact pathways and visual consistency.
-</p>
-
-</div>
-
-
-
-<div class="social-card reveal">
-
-<div class="social-icon">
-    ✦
-</div>
-
-<h3>
-    Branded Content
-</h3>
-
-<p>
-    Reusable templates for mental health
-    education, awareness and practice updates.
-</p>
-
-</div>
-
-
-
-<div class="social-card reveal">
-
-<div class="social-icon">
-    ◇
-</div>
-
-<h3>
-    Educational Presence
-</h3>
-
-<p>
-    Convert professional expertise into
-    clear, patient-friendly educational content.
-</p>
-
-</div>
-
-
-
-<div class="social-card reveal">
-
-<div class="social-icon">
-    ↗
-</div>
-
-<h3>
-    Cross-Platform Presence
-</h3>
-
-<p>
-    Connect your website, Thomson Clinic
-    profile and social channels.
-</p>
-
-</div>
-
-
-</div>
-
-
-<div
-    style="
-        text-align:center;
-        margin-top:35px;
-    "
-    class="reveal">
-
-<a
-    href="#"
-    class="btn btn-whatsapp whatsapp-link"
-    data-message="Hello Thomson Clinic, I am interested in professional social media support for my medical practice. Please share the available options.">
-
-    Ask About Social Media Support →
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-<!-- =====================================================
-     DIGITAL ECOSYSTEM
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="reveal">
-
-<div class="section-label">
-    ONE DIGITAL ECOSYSTEM
-</div>
-
-<h2 class="section-title">
-
-    Your professional identity,
-    <span>connected.</span>
-
-</h2>
-
-<p class="section-description">
-
-    Instead of managing disconnected digital assets,
-    create a coherent ecosystem where your website,
-    Thomson Clinic profile and social presence
-    reinforce each other.
-
-</p>
-
-</div>
-
-
-<div class="ecosystem-map reveal">
-
-
-<div class="map-grid">
-
-
-<div class="map-box">
-
-<div class="map-icon">
-    ◇
-</div>
-
-<h3>
-    Your Website
-</h3>
-
-<p>
-    Your own professional digital home
-    built around your practice.
-</p>
-
-</div>
-
-
-
-<div class="map-box center">
-
-<div class="map-icon">
-    ◎
-</div>
-
-<h3>
-    Thomson Clinic
-</h3>
-
-<p>
-    Complimentary doctor listing connected
-    to your professional profile.
-</p>
-
-</div>
-
-
-
-<div class="map-box">
-
-<div class="map-icon">
-    ✦
-</div>
-
-<h3>
-    Social Media
-</h3>
-
-<p>
-    Consistent educational content and
-    professional digital visibility.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PROCESS
-===================================================== -->
-
-<section
-    class="section process"
-    id="process">
-
-<div class="container">
-
-
-<div
-    style="text-align:center;"
-    class="reveal">
-
-<div class="section-label">
-    SIMPLE PROCESS
-</div>
-
-<h2 class="section-title">
-
-    From idea to
-    <span>online presence.</span>
-
-</h2>
-
-<p
-    class="section-description"
-    style="margin:auto;">
-
-    No technical expertise required.
-    We handle the digital implementation while
-    you focus on your practice.
-
-</p>
-
-</div>
-
-
-
-<div class="process-grid">
-
-
-<div class="process-step reveal">
-
-<div class="process-number">
-    01
-</div>
-
-<h3>
-    Share Your Details
-</h3>
-
-<p>
-    Tell us about your practice,
-    specialty and requirements.
-</p>
-
-</div>
-
-
-
-<div class="process-step reveal">
-
-<div class="process-number">
-    02
-</div>
-
-<h3>
-    We Design
-</h3>
-
-<p>
-    We build your website and
-    professional digital profile.
-</p>
-
-</div>
-
-
-
-<div class="process-step reveal">
-
-<div class="process-number">
-    03
-</div>
-
-<h3>
-    Review
-</h3>
-
-<p>
-    Review the website and
-    provide your feedback.
-</p>
-
-</div>
-
-
-
-<div class="process-step reveal">
-
-<div class="process-number">
-    04
-</div>
-
-<h3>
-    Launch
-</h3>
-
-<p>
-    Your website goes live and
-    your portal listing is prepared.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     WHY
-===================================================== -->
-
-<section class="section">
-
-<div class="container">
-
-
-<div class="reveal">
-
-<div class="section-label">
-    WHY WORK WITH US
-</div>
-
-<h2 class="section-title">
-
-    Built around the realities
-    <span>of medical practice.</span>
-
-</h2>
-
-</div>
-
-
-<div class="why-grid">
-
-
-<div class="why-card reveal">
-
-<div class="why-icon">
-    ◇
-</div>
-
-<div>
-
-<h3>
-    Doctor-first design
-</h3>
-
-<p>
-    Designed around professional credibility,
-    patient understanding and accessibility.
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="why-card reveal">
-
-<div class="why-icon">
-    ⚡
-</div>
-
-<div>
-
-<h3>
-    No technical headache
-</h3>
-
-<p>
-    You provide your professional information.
-    We handle the technical implementation.
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="why-card reveal">
-
-<div class="why-icon">
-    ◎
-</div>
-
-<div>
-
-<h3>
-    Consistent identity
-</h3>
-
-<p>
-    Your website, portal profile and social
-    presence can share one professional identity.
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="why-card reveal">
-
-<div class="why-icon">
-    ↗
-</div>
-
-<div>
-
-<h3>
-    Start small. Scale later.
-</h3>
-
-<p>
-    Begin with a simple website and add
-    functionality as your practice grows.
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FAQ
-===================================================== -->
+     FEATURES
+     ===================================================== -->
 
 <section
     class="section"
-    id="faq">
+    id="features">
 
-<div class="container">
+    <div class="container">
 
+        <div class="section-heading">
 
-<div
-    style="text-align:center;"
-    class="reveal">
+            <h2>
+                Everything in one place.
+            </h2>
 
-<div class="section-label">
-    FAQ
-</div>
+            <p>
 
-<h2 class="section-title">
+                A flexible foundation that can grow
+                with your website.
 
-    Before you
-    <span>get started.</span>
+            </p>
 
-</h2>
+        </div>
 
-</div>
 
+        <div class="cards">
 
-<div class="faq">
 
+            <article class="card">
 
-<div class="faq-item">
+                <div class="card-icon">
+                    ⌕
+                </div>
 
-<button class="faq-question">
+                <h3>
+                    Smart Search
+                </h3>
 
-    Do I need technical knowledge?
+                <p>
 
-    <span>+</span>
+                    Search your entire website from
+                    a single macOS-inspired interface.
 
-</button>
+                </p>
 
-<div class="faq-answer">
+            </article>
 
-<div class="faq-answer-inner">
 
-    No. You provide your professional details,
-    photographs and content. We handle the website
-    development and deployment.
 
-</div>
+            <article class="card">
 
-</div>
+                <div class="card-icon">
+                    ◐
+                </div>
 
-</div>
+                <h3>
+                    Adaptive Theme
+                </h3>
 
+                <p>
 
+                    Light, dark and system themes
+                    with smooth transitions.
 
-<div class="faq-item">
+                </p>
 
-<button class="faq-question">
+            </article>
 
-    Is the Thomson Clinic listing complimentary?
 
-    <span>+</span>
 
-</button>
+            <article class="card">
 
-<div class="faq-answer">
+                <div class="card-icon">
+                    ◫
+                </div>
 
-<div class="faq-answer-inner">
+                <h3>
+                    Responsive
+                </h3>
 
-    Yes. The doctor portal listing is offered as
-    a complimentary benefit with the website service.
-    Any future optional paid services would be
-    communicated separately.
+                <p>
 
-</div>
+                    Designed to work naturally across
+                    desktop, tablet and mobile.
 
-</div>
+                </p>
 
-</div>
+            </article>
 
 
+        </div>
 
-<div class="faq-item">
-
-<button class="faq-question">
-
-    Can I use my own domain?
-
-    <span>+</span>
-
-</button>
-
-<div class="faq-answer">
-
-<div class="faq-answer-inner">
-
-    Yes. You can use an existing domain or register
-    a new professional domain. Domain and third-party
-    service charges, where applicable, are separate.
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="faq-item">
-
-<button class="faq-question">
-
-    Can I add appointment booking?
-
-    <span>+</span>
-
-</button>
-
-<div class="faq-answer">
-
-<div class="faq-answer-inner">
-
-    Yes. Appointment enquiry forms, WhatsApp,
-    telephone, Google Maps and supported booking
-    integrations can be incorporated according
-    to your requirements.
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="faq-item">
-
-<button class="faq-question">
-
-    Can I upgrade later?
-
-    <span>+</span>
-
-</button>
-
-<div class="faq-answer">
-
-<div class="faq-answer-inner">
-
-    Yes. You can begin with the Starter package
-    and add pages, functionality and digital services
-    as your practice grows.
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="faq-item">
-
-<button class="faq-question">
-
-    How do I get started?
-
-    <span>+</span>
-
-</button>
-
-<div class="faq-answer">
-
-<div class="faq-answer-inner">
-
-    Send us a WhatsApp message with your name,
-    specialty, city and what you want from your
-    website. We will discuss the requirements
-    and recommend the appropriate option.
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 
 <!-- =====================================================
-     FINAL CTA
-===================================================== -->
+     RESOURCES
+     ===================================================== -->
 
 <section
-    class="final-cta"
-    id="contact">
+    class="section"
+    id="resources">
 
-<div class="container">
+    <div class="container">
 
+        <div class="section-heading">
 
-<div class="cta-box reveal">
+            <h2>
+                Built to grow.
+            </h2>
 
+            <p>
 
-<div class="cta-content">
+                Add pages, articles, tools and resources
+                without changing the overall interface.
 
+            </p>
 
-<div>
-
-<h2>
-    Ready to build your
-    digital practice?
-</h2>
-
-<p>
-
-    Start with a professional website,
-    become part of the Thomson Clinic doctor
-    network and strengthen your digital identity.
-
-</p>
-
-</div>
+        </div>
 
 
-<div class="cta-actions">
+        <div class="cards">
 
 
-<a
-    href="#"
-    class="btn btn-primary whatsapp-link"
-    data-message="Hello Thomson Clinic, I would like to build a professional website for my medical practice. Please contact me to discuss the requirements.">
+            <article class="card">
 
-    Get Started Today →
+                <div class="card-icon">
+                    ◌
+                </div>
 
-</a>
+                <h3>
+                    Pages
+                </h3>
 
+                <p>
+                    Create independent pages while
+                    maintaining the same global interface.
+                </p>
 
-<a
-    href="#"
-    class="btn btn-whatsapp whatsapp-link"
-    data-message="Hello Thomson Clinic, I am a doctor interested in your website + complimentary Thomson Clinic portal listing. Please share the details.">
-
-    WhatsApp Thomson Clinic
-
-</a>
+            </article>
 
 
-</div>
+            <article class="card">
+
+                <div class="card-icon">
+                    ≡
+                </div>
+
+                <h3>
+                    Articles
+                </h3>
+
+                <p>
+                    Publish structured content that can
+                    automatically appear in site search.
+                </p>
+
+            </article>
 
 
-</div>
+            <article class="card">
 
-</div>
+                <div class="card-icon">
+                    +
+                </div>
 
-</div>
+                <h3>
+                    Expand
+                </h3>
+
+                <p>
+                    Add calculators, tools, directories
+                    and interactive applications later.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
 
 </section>
+
+
+
+<!-- =====================================================
+     ABOUT
+     ===================================================== -->
+
+<section
+    class="section"
+    id="about">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>
+                Your digital space.
+            </h2>
+
+            <p>
+
+                This is the foundation. The content,
+                branding and functionality can now be
+                built on top of it.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
 
 
 
 <!-- =====================================================
      FOOTER
-===================================================== -->
+     ===================================================== -->
 
 <footer>
 
 <div class="container">
 
 
-<div class="footer-grid">
+    <div class="footer-grid">
 
 
-<div class="footer-brand">
+        <div>
 
-<div class="footer-logo">
-    ThomsonClinic.com
-</div>
+            <div class="logo">
 
-<p>
+                <span class="logo-mark">
+                    Y
+                </span>
 
-    CARE · SCIENCE · ACCESS · FOR ALL
+                <span>
+                    Your Website
+                </span>
 
-    <br><br>
+            </div>
 
-    Digital tools and professional online
-    presence for healthcare practitioners.
+            <p>
 
-</p>
+                A modern digital experience.
 
-</div>
+            </p>
 
-
-<div class="footer-links">
-
-<a href="#websites">
-    Websites
-</a>
-
-<a href="#portal">
-    Doctor Portal
-</a>
-
-<a href="#social">
-    Social Presence
-</a>
-
-<a href="#visibility">
-    Google Visibility
-</a>
-
-<a href="#process">
-    How It Works
-</a>
-
-<a href="#faq">
-    FAQ
-</a>
-
-</div>
+        </div>
 
 
-</div>
+        <div class="footer-column">
+
+            <div class="footer-title">
+                Website
+            </div>
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#resources">
+                Resources
+            </a>
+
+        </div>
 
 
-<div class="footer-bottom">
+        <div class="footer-column">
 
-<span id="copyright">
-    © 2026 Thomson Clinic. All rights reserved.
-</span>
+            <div class="footer-title">
+                Information
+            </div>
 
-<span>
-    CARE · SCIENCE · ACCESS · FOR ALL
-</span>
+            <a href="#about">
+                About
+            </a>
 
-</div>
+            <a href="#">
+                Privacy
+            </a>
+
+            <a href="#">
+                Terms
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <div class="footer-title">
+                Contact
+            </div>
+
+            <a href="mailto:hello@example.com">
+                Email
+            </a>
+
+            <a href="#">
+                Support
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Your Website
+        </span>
+
+        <span>
+            Designed with a macOS-inspired interface
+        </span>
+
+    </div>
+
 
 </div>
 
@@ -5842,172 +1928,191 @@ footer{
 
 
 <!-- =====================================================
-     WHATSAPP FLOAT
-===================================================== -->
+     SEARCH OVERLAY
+     ===================================================== -->
 
-<a
-    href="#"
-    class="whatsapp-float whatsapp-link"
-    aria-label="WhatsApp Thomson Clinic"
+<div
+    class="search-overlay"
+    id="searchOverlay">
 
-    data-message="Hello Thomson Clinic, I am a doctor and I would like to know more about your website, doctor portal listing and digital presence services.">
-
-    <span class="whatsapp-tooltip">
-        Chat with Thomson Clinic
-    </span>
-
-    <svg
-        class="whatsapp-svg"
-        viewBox="0 0 32 32"
-        aria-hidden="true"
-        focusable="false">
-        <path
-            fill="currentColor"
-            d="M19.11 17.33c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.33-1.57-1.49-1.84-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.52-.45-.45-.61-.46h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.93 2.95 4.68 4.13.65.28 1.16.45 1.56.57.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
-        <path
-            fill="currentColor"
-            d="M16.02 4.1c-6.58 0-11.92 5.34-11.92 11.92 0 2.1.55 4.07 1.51 5.78L4 27.9l6.27-1.64a11.86 11.86 0 0 0 5.75 1.48h.01c6.58 0 11.92-5.34 11.92-11.92S22.6 4.1 16.02 4.1zm0 21.64h-.01a9.7 9.7 0 0 1-4.95-1.36l-.35-.21-3.72.97.99-3.63-.23-.37a9.72 9.72 0 1 1 8.27 4.6z"/>
-    </svg>
-
-</a>
+    <div class="search-panel">
 
 
+        <div class="search-input-wrapper">
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+            <span>
+                ⌕
+            </span>
+
+            <input
+                type="search"
+                class="search-input"
+                id="searchInput"
+                placeholder="Search this website..."
+                autocomplete="off">
+
+            <span class="shortcut">
+                ESC
+            </span>
+
+        </div>
+
+
+        <div
+            class="search-results"
+            id="searchResults">
+
+            <div class="search-result">
+
+                <div class="search-result-title">
+                    Start typing to search
+                </div>
+
+                <div class="search-result-description">
+
+                    Search pages, resources and articles.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
 
 <script>
 
-
-/* =====================================================
-   WHATSAPP
-===================================================== */
-
-const WHATSAPP_NUMBER =
-    "919438450966";
-
-
-document
-.querySelectorAll(".whatsapp-link")
-.forEach(link => {
-
-    link.addEventListener(
-        "click",
-        function(e){
-
-            e.preventDefault();
-
-            const message =
-                this.dataset.message ||
-                "Hello Thomson Clinic, I would like to know more about your services.";
-
-            const whatsappURL =
-                "https://wa.me/" +
-                WHATSAPP_NUMBER +
-                "?text=" +
-                encodeURIComponent(message);
-
-            window.open(
-                whatsappURL,
-                "_blank",
-                "noopener,noreferrer"
-            );
-
-        }
-    );
-
-});
-
-
-
-/* =====================================================
-   THEME
-===================================================== */
+/* =========================================================
+   THEME SYSTEM
+   ========================================================= */
 
 const themeToggle =
     document.getElementById("themeToggle");
 
-
-/* Load saved theme */
-
-const savedTheme =
-    localStorage.getItem(
-        "thomson-theme"
-    );
+const themeIcon =
+    document.getElementById("themeIcon");
 
 
-if(savedTheme === "dark"){
+function applyTheme(theme) {
 
-    document.body.classList.add("dark");
+    if (theme === "system") {
+
+        document.documentElement
+            .removeAttribute("data-theme");
+
+        themeIcon.textContent = "◐";
+
+        return;
+
+    }
+
+
+    document.documentElement
+        .setAttribute("data-theme", theme);
+
+
+    if (theme === "dark") {
+
+        themeIcon.textContent = "☾";
+
+    } else {
+
+        themeIcon.textContent = "☀";
+
+    }
 
 }
 
 
-/* Toggle */
+let savedTheme =
+    localStorage.getItem("site-theme")
+    || "system";
+
+
+applyTheme(savedTheme);
+
+
 
 themeToggle.addEventListener(
     "click",
     () => {
 
-        document.body.classList.toggle("dark");
+        let current =
+            localStorage.getItem("site-theme")
+            || "system";
 
-        const isDark =
-            document.body.classList.contains("dark");
+
+        let next;
+
+
+        if (current === "system") {
+
+            next = "dark";
+
+        }
+
+        else if (current === "dark") {
+
+            next = "light";
+
+        }
+
+        else {
+
+            next = "system";
+
+        }
+
 
         localStorage.setItem(
-            "thomson-theme",
-            isDark
-            ? "dark"
-            : "light"
+            "site-theme",
+            next
         );
+
+
+        applyTheme(next);
 
     }
 );
 
 
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
 
-/* =====================================================
-   MOBILE NAVIGATION
-===================================================== */
+const mobileMenuButton =
+    document.getElementById(
+        "mobileMenuButton"
+    );
 
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const navLinks =
-    document.getElementById("navLinks");
+const menu =
+    document.getElementById("menu");
 
 
-menuBtn.addEventListener(
+mobileMenuButton.addEventListener(
     "click",
     () => {
 
-        navLinks.classList.toggle("active");
-
-        menuBtn.textContent =
-            navLinks.classList.contains("active")
-            ? "×"
-            : "☰";
+        menu.classList.toggle("active");
 
     }
 );
 
 
-/* Close menu */
-
-document
-.querySelectorAll(".nav-links a")
-.forEach(link => {
+document.querySelectorAll(
+    ".menu a"
+).forEach(link => {
 
     link.addEventListener(
         "click",
         () => {
 
-            navLinks.classList.remove(
-                "active"
-            );
-
-            menuBtn.textContent = "☰";
+            menu.classList.remove("active");
 
         }
     );
@@ -6015,30 +2120,83 @@ document
 });
 
 
+/* =========================================================
+   SEARCH
+   ========================================================= */
 
-/* =====================================================
-   HEADER SCROLL
-===================================================== */
+const searchOverlay =
+    document.getElementById(
+        "searchOverlay"
+    );
 
-const header =
-    document.getElementById("header");
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+const searchButton =
+    document.getElementById(
+        "searchButton"
+    );
+
+const heroSearch =
+    document.getElementById(
+        "heroSearch"
+    );
+
+const searchResults =
+    document.getElementById(
+        "searchResults"
+    );
 
 
-window.addEventListener(
-    "scroll",
-    () => {
+function openSearch() {
 
-        if(window.scrollY > 25){
+    searchOverlay.classList.add(
+        "active"
+    );
 
-            header.classList.add(
-                "scrolled"
-            );
+    setTimeout(
+        () => searchInput.focus(),
+        100
+    );
 
-        }else{
+}
 
-            header.classList.remove(
-                "scrolled"
-            );
+
+function closeSearch() {
+
+    searchOverlay.classList.remove(
+        "active"
+    );
+
+    searchInput.value = "";
+
+}
+
+
+searchButton.addEventListener(
+    "click",
+    openSearch
+);
+
+
+heroSearch.addEventListener(
+    "click",
+    openSearch
+);
+
+
+searchOverlay.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target ===
+            searchOverlay
+        ) {
+
+            closeSearch();
 
         }
 
@@ -6046,407 +2204,178 @@ window.addEventListener(
 );
 
 
+document.addEventListener(
+    "keydown",
+    event => {
 
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
+        /* Command + K / Control + K */
 
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
+        if (
+            (event.metaKey ||
+             event.ctrlKey) &&
+            event.key.toLowerCase() === "k"
+        ) {
 
+            event.preventDefault();
 
-const observer =
-    new IntersectionObserver(
+            openSearch();
 
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if(
-                        entry.isIntersecting
-                    ){
-
-                        entry.target
-                            .classList
-                            .add("visible");
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-
-        {
-            threshold:.12
         }
 
-    );
 
+        /* Escape */
 
-revealElements.forEach(
-    element => {
+        if (
+            event.key === "Escape"
+        ) {
 
-        observer.observe(element);
+            closeSearch();
+
+        }
 
     }
 );
 
 
+/* =========================================================
+   DEMO SEARCH INDEX
+   ========================================================= */
 
-/* =====================================================
-   FAQ
-===================================================== */
+const searchIndex = [
 
-const faqItems =
-    document.querySelectorAll(
-        ".faq-item"
-    );
+    {
+        title: "Home",
+        description:
+            "Main page of the website.",
+        url: "/"
+    },
 
+    {
+        title: "Features",
+        description:
+            "Explore the features of the website.",
+        url: "#features"
+    },
 
-faqItems.forEach(
-    item => {
+    {
+        title: "Resources",
+        description:
+            "Browse available resources.",
+        url: "#resources"
+    },
 
-        const question =
-            item.querySelector(
-                ".faq-question"
-            );
-
-        const answer =
-            item.querySelector(
-                ".faq-answer"
-            );
-
-
-        question.addEventListener(
-            "click",
-            () => {
-
-                const active =
-                    item.classList.contains(
-                        "active"
-                    );
-
-
-                /* Close everything */
-
-                faqItems.forEach(
-                    other => {
-
-                        other.classList
-                            .remove(
-                                "active"
-                            );
-
-                        other
-                            .querySelector(
-                                ".faq-answer"
-                            )
-                            .style
-                            .maxHeight = null;
-
-                    }
-                );
-
-
-                /* Open selected */
-
-                if(!active){
-
-                    item.classList.add(
-                        "active"
-                    );
-
-                    answer.style.maxHeight =
-                        answer.scrollHeight +
-                        "px";
-
-                }
-
-            }
-        );
-
+    {
+        title: "About",
+        description:
+            "Learn more about this website.",
+        url: "#about"
     }
-);
 
-
-
-/* =====================================================
-   SMOOTH SCROLL
-===================================================== */
-
-document
-.querySelectorAll(
-    'a[href^="#"]'
-)
-.forEach(anchor => {
-
-    anchor.addEventListener(
-        "click",
-        function(e){
-
-            const id =
-                this.getAttribute(
-                    "href"
-                );
-
-            if(
-                id === "#" ||
-                id === ""
-            ){
-
-                return;
-
-            }
-
-
-            const target =
-                document.querySelector(id);
-
-
-            if(target){
-
-                e.preventDefault();
-
-
-                const offset =
-                    header.offsetHeight + 12;
-
-
-                const position =
-                    target
-                    .getBoundingClientRect()
-                    .top
-                    +
-                    window.scrollY
-                    -
-                    offset;
-
-
-                window.scrollTo({
-
-                    top:position,
-
-                    behavior:"smooth"
-
-                });
-
-            }
-
-        }
-    );
-
-});
-
-
-
-
-/* =====================================================
-   GOOGLE SEARCH ANIMATION
-===================================================== */
-
-const googleQueries = [
-    "psychiatrist near me",
-    "Dr. Your Name psychiatrist",
-    "psychiatrist in your city",
-    "mental health specialist"
 ];
 
-const googleQuery =
-    document.getElementById("googleQuery");
 
-const googleResults =
-    document.querySelectorAll(".search-result");
+searchInput.addEventListener(
+    "input",
+    () => {
 
-let googleQueryIndex = 0;
-let googleAnimating = false;
-
-function runGoogleVisibilityAnimation(){
-
-    if(!googleQuery || googleAnimating){
-        return;
-    }
-
-    googleAnimating = true;
-
-    const query =
-        googleQueries[googleQueryIndex];
-
-    googleQuery.textContent = "";
-
-    let i = 0;
-
-    const typeTimer =
-        setInterval(() => {
-
-            googleQuery.textContent =
-                query.slice(0, i + 1);
-
-            i++;
-
-            if(i >= query.length){
-
-                clearInterval(typeTimer);
-
-                setTimeout(() => {
-
-                    googleResults.forEach(
-                        (result, index) => {
-
-                            setTimeout(() => {
-
-                                result.classList.add(
-                                    "active"
-                                );
-
-                            }, index * 180);
-
-                        }
-                    );
-
-                    setTimeout(() => {
-
-                        googleResults.forEach(
-                            result => {
-                                result.classList.remove(
-                                    "active"
-                                );
-                            }
-                        );
-
-                        googleQueryIndex =
-                            (googleQueryIndex + 1)
-                            % googleQueries.length;
-
-                        googleAnimating = false;
-
-                        runGoogleVisibilityAnimation();
-
-                    }, 3600);
-
-                }, 450);
-
-            }
-
-        }, 48);
-}
+        const query =
+            searchInput.value
+                .toLowerCase()
+                .trim();
 
 
-/* Start only when visible */
+        if (!query) {
 
-const visibilitySection =
-    document.getElementById("visibility");
+            searchResults.innerHTML = `
 
-if(visibilitySection){
+                <div class="search-result">
 
-    const visibilityObserver =
-        new IntersectionObserver(
-            entries => {
+                    <div class="search-result-title">
+                        Start typing to search
+                    </div>
 
-                entries.forEach(entry => {
+                    <div class="search-result-description">
+                        Search pages, resources and articles.
+                    </div>
 
-                    if(entry.isIntersecting){
+                </div>
 
-                        runGoogleVisibilityAnimation();
+            `;
 
-                        visibilityObserver.unobserve(
-                            visibilitySection
-                        );
-
-                    }
-
-                });
-
-            },
-            {threshold:.18}
-        );
-
-    visibilityObserver.observe(
-        visibilitySection
-    );
-}
-
-
-
-/* =====================================================
-   CURRENT YEAR
-===================================================== */
-
-document.getElementById(
-    "copyright"
-).textContent =
-    "© " +
-    new Date().getFullYear() +
-    " Thomson Clinic. All rights reserved.";
-
-
-
-/* =====================================================
-   CURSOR GLOW — DESKTOP
-===================================================== */
-
-if(
-    window.matchMedia(
-        "(pointer:fine)"
-    ).matches
-){
-
-    const glow =
-        document.createElement(
-            "div"
-        );
-
-    glow.style.position =
-        "fixed";
-
-    glow.style.width =
-        "180px";
-
-    glow.style.height =
-        "180px";
-
-    glow.style.borderRadius =
-        "50%";
-
-    glow.style.pointerEvents =
-        "none";
-
-    glow.style.zIndex =
-        "-1";
-
-    glow.style.background =
-        "radial-gradient(circle, rgba(24,183,196,.07), transparent 70%)";
-
-    glow.style.transform =
-        "translate(-50%,-50%)";
-
-    document.body.appendChild(glow);
-
-
-    document.addEventListener(
-        "mousemove",
-        e => {
-
-            glow.style.left =
-                e.clientX + "px";
-
-            glow.style.top =
-                e.clientY + "px";
+            return;
 
         }
-    );
 
-}
 
+        const results =
+            searchIndex.filter(item =>
+
+                item.title
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                item.description
+                    .toLowerCase()
+                    .includes(query)
+
+            );
+
+
+        if (!results.length) {
+
+            searchResults.innerHTML = `
+
+                <div class="search-result">
+
+                    <div class="search-result-title">
+                        No results
+                    </div>
+
+                    <div class="search-result-description">
+                        Try a different search term.
+                    </div>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        searchResults.innerHTML =
+            results.map(item => `
+
+                <a
+                    class="search-result"
+                    href="${item.url}">
+
+                    <div
+                        class="search-result-title">
+
+                        ${item.title}
+
+                    </div>
+
+                    <div
+                        class="search-result-description">
+
+                        ${item.description}
+
+                    </div>
+
+                </a>
+
+            `).join("");
+
+    }
+);
 
 </script>
+
 
 </body>
 </html>
