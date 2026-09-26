@@ -1,0 +1,9 @@
+[
+  {"title":"Home","description":"A clean, intelligent, beautifully designed experience for the modern web.","url":"index.html","category":"Website","keywords":"welcome home digital space features"},
+  {"title":"About","description":"Learn about our purpose, principles, and approach to building useful digital spaces.","url":"pages/about.html","category":"Website","keywords":"mission principles offer values"},
+  {"title":"Resources","description":"Browse example guides, tools, references, and learning resources.","url":"pages/resources.html","category":"Library","keywords":"guides tools references learning library"},
+  {"title":"Articles","description":"Read practical notes on clarity, digital craft, and considered work.","url":"pages/articles.html","category":"Library","keywords":"articles writing ideas design workflow"},
+  {"title":"Contact","description":"Start a conversation or share a question using our contact form.","url":"pages/contact.html","category":"Website","keywords":"contact message form get in touch"},
+  {"title":"Privacy","description":"A privacy policy template to review and customize before use.","url":"pages/privacy.html","category":"Legal","keywords":"privacy data cookies policy legal"},
+  {"title":"Terms","description":"Terms of use template to review and customize before use.","url":"pages/terms.html","category":"Legal","keywords":"terms conditions use legal agreement"}
+]
