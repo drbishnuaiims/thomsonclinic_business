@@ -24,7 +24,6 @@ async function loadComponent(target, component) {
             throw new Error(
                 `Unable to load ${component}`
             );
-
         }
 
         element.innerHTML =
@@ -35,7 +34,7 @@ async function loadComponent(target, component) {
                 "componentLoaded",
                 {
                     detail: {
-                        component: component
+                        component
                     }
                 }
             )
@@ -46,17 +45,16 @@ async function loadComponent(target, component) {
     catch (error) {
 
         console.error(
-            "Component error:",
+            "Component loading error:",
             error
         );
 
     }
-
 }
 
 
 /* =========================================================
-   LOAD GLOBAL COMPONENTS
+   INITIAL COMPONENTS
    ========================================================= */
 
 document.addEventListener(
@@ -78,13 +76,8 @@ document.addEventListener(
 
 
 /* =========================================================
-   ADVANCED APPEARANCE ENGINE
+   THEME ENGINE
    ========================================================= */
-
-
-/* ---------------------------------------------------------
-   GET SAVED THEME
-   --------------------------------------------------------- */
 
 function getStoredTheme() {
 
@@ -93,34 +86,13 @@ function getStoredTheme() {
             "website-theme"
         ) || "system"
     );
-
 }
 
-
-/* ---------------------------------------------------------
-   GET SYSTEM THEME
-   --------------------------------------------------------- */
-
-function getSystemTheme() {
-
-    return window.matchMedia(
-        "(prefers-color-scheme: dark)"
-    ).matches
-        ? "dark"
-        : "light";
-
-}
-
-
-/* ---------------------------------------------------------
-   APPLY THEME
-   --------------------------------------------------------- */
 
 function applyGlobalTheme(theme) {
 
     const root =
         document.documentElement;
-
 
     if (theme === "system") {
 
@@ -136,20 +108,11 @@ function applyGlobalTheme(theme) {
             "data-theme",
             theme
         );
-
     }
 
-
-    updateAppearanceUI(
-        theme
-    );
-
+    updateAppearanceUI(theme);
 }
 
-
-/* ---------------------------------------------------------
-   UPDATE ICON
-   --------------------------------------------------------- */
 
 function updateThemeIcon(theme) {
 
@@ -158,9 +121,7 @@ function updateThemeIcon(theme) {
             "globalThemeIcon"
         );
 
-
     if (!icon) return;
-
 
     if (theme === "light") {
 
@@ -179,22 +140,12 @@ function updateThemeIcon(theme) {
         icon.textContent = "◐";
 
     }
-
 }
 
 
-/* ---------------------------------------------------------
-   UPDATE POPOVER
-   --------------------------------------------------------- */
+function updateAppearanceUI(theme) {
 
-function updateAppearanceUI(
-    theme
-) {
-
-    updateThemeIcon(
-        theme
-    );
-
+    updateThemeIcon(theme);
 
     document
         .querySelectorAll(
@@ -204,49 +155,39 @@ function updateAppearanceUI(
 
             option.classList.toggle(
                 "selected",
-                option.dataset.themeChoice ===
-                theme
+                option.dataset.themeChoice === theme
             );
 
         });
-
 
     const label =
         document.getElementById(
             "currentAppearanceLabel"
         );
 
-
     if (!label) return;
-
 
     if (theme === "light") {
 
-        label.textContent =
-            "Light";
+        label.textContent = "Light";
 
     }
 
     else if (theme === "dark") {
 
-        label.textContent =
-            "Dark";
+        label.textContent = "Dark";
 
     }
 
     else {
 
-        label.textContent =
-            "System";
+        label.textContent = "System";
 
     }
-
 }
 
 
-/* ---------------------------------------------------------
-   INITIAL THEME
-   --------------------------------------------------------- */
+/* Apply saved preference immediately */
 
 applyGlobalTheme(
     getStoredTheme()
@@ -266,31 +207,21 @@ document.addEventListener(
                 "header.html"
             )
         ) {
-
             return;
-
         }
-
 
         const button =
             document.getElementById(
                 "globalThemeButton"
             );
 
-
         const popover =
             document.getElementById(
                 "appearancePopover"
             );
 
-
-        if (
-            !button ||
-            !popover
-        ) {
-
+        if (!button || !popover) {
             return;
-
         }
 
 
@@ -302,23 +233,21 @@ document.addEventListener(
 
                 event.stopPropagation();
 
-
                 const isOpen =
                     popover.classList.toggle(
                         "open"
                     );
 
-
                 button.setAttribute(
                     "aria-expanded",
-                    isOpen
+                    String(isOpen)
                 );
 
             }
         );
 
 
-        /* Theme options */
+        /* Theme selection */
 
         document
             .querySelectorAll(
@@ -332,27 +261,21 @@ document.addEventListener(
 
                         event.stopPropagation();
 
-
                         const theme =
-                            option.dataset
-                                .themeChoice;
-
+                            option.dataset.themeChoice;
 
                         localStorage.setItem(
                             "website-theme",
                             theme
                         );
 
-
                         applyGlobalTheme(
                             theme
                         );
 
-
                         popover.classList.remove(
                             "open"
                         );
-
 
                         button.setAttribute(
                             "aria-expanded",
@@ -384,12 +307,10 @@ document.addEventListener(
                         "open"
                     );
 
-
                     button.setAttribute(
                         "aria-expanded",
                         "false"
                     );
-
                 }
 
             }
@@ -403,9 +324,12 @@ document.addEventListener(
    SYSTEM THEME CHANGES
    ========================================================= */
 
-window.matchMedia(
-    "(prefers-color-scheme: dark)"
-).addEventListener(
+const systemTheme =
+    window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    );
+
+systemTheme.addEventListener(
     "change",
     () => {
 
@@ -416,85 +340,7 @@ window.matchMedia(
             applyGlobalTheme(
                 "system"
             );
-
         }
-
-    }
-);
-
-/* =========================================================
-   THEME BUTTON
-   ========================================================= */
-
-document.addEventListener(
-    "componentLoaded",
-    event => {
-
-        if (
-            !event.detail.component.includes(
-                "header.html"
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        const button =
-            document.getElementById(
-                "globalThemeButton"
-            );
-
-
-        if (!button) return;
-
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const current =
-                    getStoredTheme();
-
-                let next;
-
-
-                if (
-                    current === "system"
-                ) {
-
-                    next = "dark";
-
-                }
-
-                else if (
-                    current === "dark"
-                ) {
-
-                    next = "light";
-
-                }
-
-                else {
-
-                    next = "system";
-
-                }
-
-
-                localStorage.setItem(
-                    "website-theme",
-                    next
-                );
-
-
-                applyGlobalTheme(
-                    next
-                );
-
-            }
-        );
 
     }
 );
@@ -513,31 +359,21 @@ document.addEventListener(
                 "header.html"
             )
         ) {
-
             return;
-
         }
-
 
         const button =
             document.getElementById(
                 "mobileMenuButton"
             );
 
-
         const navigation =
             document.getElementById(
                 "mobileNavigation"
             );
 
-
-        if (
-            !button ||
-            !navigation
-        ) {
-
+        if (!button || !navigation) {
             return;
-
         }
 
 
@@ -545,12 +381,19 @@ document.addEventListener(
             "click",
             () => {
 
-                navigation.classList.toggle(
-                    "open"
-                );
+                const open =
+                    navigation.classList.toggle(
+                        "open"
+                    );
 
                 button.classList.toggle(
-                    "active"
+                    "active",
+                    open
+                );
+
+                button.setAttribute(
+                    "aria-expanded",
+                    String(open)
                 );
 
             }
@@ -573,6 +416,11 @@ document.addEventListener(
                             "active"
                         );
 
+                        button.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
                     }
                 );
 
@@ -583,17 +431,13 @@ document.addEventListener(
 
 
 /* =========================================================
-   SEARCH ENGINE
+   SEARCH DATABASE
    ========================================================= */
 
 let searchIndex = [];
 
 let selectedResult = -1;
 
-
-/* ---------------------------------------------------------
-   LOAD SEARCH INDEX
-   --------------------------------------------------------- */
 
 async function loadSearchIndex() {
 
@@ -604,19 +448,15 @@ async function loadSearchIndex() {
                 "/data/search-index.json"
             );
 
-
         if (!response.ok) {
 
             throw new Error(
                 "Search index unavailable"
             );
-
         }
-
 
         searchIndex =
             await response.json();
-
 
     }
 
@@ -630,7 +470,6 @@ async function loadSearchIndex() {
         searchIndex = [];
 
     }
-
 }
 
 
@@ -638,7 +477,7 @@ loadSearchIndex();
 
 
 /* =========================================================
-   CREATE SEARCH UI
+   SEARCH UI
    ========================================================= */
 
 function createSearchInterface() {
@@ -648,9 +487,7 @@ function createSearchInterface() {
             "globalSearchOverlay"
         )
     ) {
-
         return;
-
     }
 
 
@@ -659,10 +496,8 @@ function createSearchInterface() {
             "div"
         );
 
-
     overlay.id =
         "globalSearchOverlay";
-
 
     overlay.className =
         "global-search-overlay";
@@ -688,6 +523,7 @@ function createSearchInterface() {
                 >
 
                 <button
+                    type="button"
                     class="search-close-button"
                     id="searchCloseButton">
 
@@ -731,7 +567,6 @@ function createSearchInterface() {
             </div>
 
         </div>
-
     `;
 
 
@@ -739,9 +574,7 @@ function createSearchInterface() {
         overlay
     );
 
-
     initialiseSearchEvents();
-
 }
 
 
@@ -753,40 +586,32 @@ function openGlobalSearch() {
 
     createSearchInterface();
 
-
     const overlay =
         document.getElementById(
             "globalSearchOverlay"
         );
-
 
     const input =
         document.getElementById(
             "globalSearchInput"
         );
 
-
     overlay.classList.add(
         "active"
     );
-
 
     document.body.classList.add(
         "search-open"
     );
 
-
     selectedResult = -1;
-
 
     setTimeout(
         () => input.focus(),
         50
     );
 
-
     renderSearchResults("");
-
 }
 
 
@@ -801,40 +626,22 @@ function closeGlobalSearch() {
             "globalSearchOverlay"
         );
 
-
     if (!overlay) return;
-
 
     overlay.classList.remove(
         "active"
     );
 
-
     document.body.classList.remove(
         "search-open"
     );
 
-
-    const input =
-        document.getElementById(
-            "globalSearchInput"
-        );
-
-
-    if (input) {
-
-        input.value = "";
-
-    }
-
-
     selectedResult = -1;
-
 }
 
 
 /* =========================================================
-   SEARCH ALGORITHM
+   SEARCH
    ========================================================= */
 
 function performSearch(query) {
@@ -844,11 +651,12 @@ function performSearch(query) {
             .toLowerCase()
             .trim();
 
-
     if (!query) {
 
-        return searchIndex.slice(0, 8);
-
+        return searchIndex.slice(
+            0,
+            8
+        );
     }
 
 
@@ -858,92 +666,88 @@ function performSearch(query) {
             .filter(Boolean);
 
 
-    const results =
-        searchIndex
-            .map(item => {
+    return searchIndex
 
-                const title =
-                    item.title
-                        .toLowerCase();
+        .map(item => {
 
-                const description =
-                    item.description
-                        .toLowerCase();
+            const title =
+                (item.title || "")
+                    .toLowerCase();
 
-                const keywords =
-                    (
-                        item.keywords || []
-                    )
+            const description =
+                (item.description || "")
+                    .toLowerCase();
+
+            const keywords =
+                (item.keywords || [])
                     .join(" ")
                     .toLowerCase();
 
-
-                let score = 0;
-
-
-                terms.forEach(term => {
-
-                    if (
-                        title === term
-                    ) {
-
-                        score += 100;
-
-                    }
-
-                    else if (
-                        title.includes(term)
-                    ) {
-
-                        score += 50;
-
-                    }
+            let score = 0;
 
 
-                    if (
-                        keywords.includes(term)
-                    ) {
+            terms.forEach(term => {
 
-                        score += 25;
+                if (
+                    title === term
+                ) {
 
-                    }
+                    score += 100;
+
+                }
+
+                else if (
+                    title.includes(term)
+                ) {
+
+                    score += 50;
+
+                }
+
+                if (
+                    keywords.includes(term)
+                ) {
+
+                    score += 25;
+
+                }
+
+                if (
+                    description.includes(term)
+                ) {
+
+                    score += 10;
+
+                }
+
+            });
 
 
-                    if (
-                        description.includes(term)
-                    ) {
+            return {
+                ...item,
+                score
+            };
 
-                        score += 10;
+        })
 
-                    }
+        .filter(
+            item => item.score > 0
+        )
 
-                });
+        .sort(
+            (a,b) =>
+                b.score - a.score
+        )
 
-
-                return {
-                    ...item,
-                    score
-                };
-
-            })
-
-            .filter(
-                item => item.score > 0
-            )
-
-            .sort(
-                (a, b) =>
-                    b.score - a.score
-            );
-
-
-    return results.slice(0, 12);
-
+        .slice(
+            0,
+            12
+        );
 }
 
 
 /* =========================================================
-   HIGHLIGHT SEARCH TERM
+   HIGHLIGHT
    ========================================================= */
 
 function highlightText(
@@ -951,8 +755,9 @@ function highlightText(
     query
 ) {
 
-    if (!query) return text;
-
+    if (!query) {
+        return text;
+    }
 
     const escaped =
         query.replace(
@@ -960,19 +765,16 @@ function highlightText(
             "\\$&"
         );
 
-
     const regex =
         new RegExp(
             `(${escaped})`,
             "gi"
         );
 
-
     return text.replace(
         regex,
         "<mark>$1</mark>"
     );
-
 }
 
 
@@ -980,23 +782,19 @@ function highlightText(
    RENDER RESULTS
    ========================================================= */
 
-function renderSearchResults(
-    query
-) {
+function renderSearchResults(query) {
 
-    const resultsContainer =
+    const container =
         document.getElementById(
             "globalSearchResults"
         );
-
 
     const meta =
         document.getElementById(
             "searchMeta"
         );
 
-
-    if (!resultsContainer) return;
+    if (!container) return;
 
 
     const results =
@@ -1006,28 +804,19 @@ function renderSearchResults(
     selectedResult = -1;
 
 
-    if (!query) {
-
-        meta.textContent =
-            "Search pages, articles and resources";
-
-    }
-
-    else {
-
-        meta.textContent =
-            `${results.length} result${
+    meta.textContent =
+        query
+            ? `${results.length} result${
                 results.length === 1
                     ? ""
                     : "s"
-            }`;
-
-    }
+            }`
+            : "Search pages, articles and resources";
 
 
     if (!results.length) {
 
-        resultsContainer.innerHTML = `
+        container.innerHTML = `
 
             <div class="search-empty">
 
@@ -1044,75 +833,67 @@ function renderSearchResults(
                 </span>
 
             </div>
-
         `;
 
         return;
-
     }
 
 
-    resultsContainer.innerHTML =
+    container.innerHTML =
         results
             .map(
-                (item, index) => `
+                (item,index) => `
 
-                <a
-                    href="${item.url}"
-                    class="global-search-result"
-                    data-index="${index}">
+                    <a
+                        href="${item.url}"
+                        class="global-search-result"
+                        data-index="${index}">
 
-                    <div class="result-leading-icon">
+                        <div class="result-leading-icon">
+                            ${
+                                item.category === "Articles"
+                                    ? "≡"
+                                    : item.category === "Resources"
+                                        ? "◈"
+                                        : "◌"
+                            }
+                        </div>
 
-                        ${
-                            item.category === "Articles"
-                                ? "≡"
-                                : item.category === "Resources"
-                                    ? "◈"
-                                    : "◌"
-                        }
+                        <div class="result-content">
 
-                    </div>
+                            <div class="result-title">
 
+                                ${highlightText(
+                                    item.title,
+                                    query
+                                )}
 
-                    <div class="result-content">
+                            </div>
 
-                        <div class="result-title">
+                            <div class="result-description">
 
-                            ${highlightText(
-                                item.title,
-                                query
-                            )}
+                                ${highlightText(
+                                    item.description,
+                                    query
+                                )}
+
+                            </div>
 
                         </div>
 
+                        <div class="result-category">
 
-                        <div class="result-description">
-
-                            ${highlightText(
-                                item.description,
-                                query
-                            )}
+                            ${item.category || "Page"}
 
                         </div>
 
-                    </div>
-
-
-                    <div class="result-category">
-
-                        ${item.category}
-
-                    </div>
-
-                </a>
-
-            `
+                    </a>
+                `
             )
             .join("");
 
 
-    resultsContainer
+    container
         .querySelectorAll(
             ".global-search-result"
         )
@@ -1130,7 +911,6 @@ function renderSearchResults(
             );
 
         });
-
 }
 
 
@@ -1138,9 +918,7 @@ function renderSearchResults(
    KEYBOARD NAVIGATION
    ========================================================= */
 
-function navigateSearch(
-    direction
-) {
+function navigateSearch(direction) {
 
     const results =
         [
@@ -1149,11 +927,13 @@ function navigateSearch(
             )
         ];
 
+    if (!results.length) {
+        return;
+    }
 
-    if (!results.length) return;
 
-
-    selectedResult += direction;
+    selectedResult +=
+        direction;
 
 
     if (
@@ -1162,7 +942,6 @@ function navigateSearch(
 
         selectedResult =
             results.length - 1;
-
     }
 
 
@@ -1172,7 +951,6 @@ function navigateSearch(
     ) {
 
         selectedResult = 0;
-
     }
 
 
@@ -1194,9 +972,9 @@ function navigateSearch(
 
 
     selected.scrollIntoView({
-        block: "nearest"
+        block:
+            "nearest"
     });
-
 }
 
 
@@ -1211,12 +989,10 @@ function initialiseSearchEvents() {
             "globalSearchOverlay"
         );
 
-
     const input =
         document.getElementById(
             "globalSearchInput"
         );
-
 
     const closeButton =
         document.getElementById(
@@ -1250,7 +1026,6 @@ function initialiseSearchEvents() {
 
             }
 
-
             else if (
                 event.key === "ArrowUp"
             ) {
@@ -1261,7 +1036,6 @@ function initialiseSearchEvents() {
 
             }
 
-
             else if (
                 event.key === "Enter"
             ) {
@@ -1270,7 +1044,6 @@ function initialiseSearchEvents() {
                     document.querySelector(
                         ".global-search-result.selected"
                     );
-
 
                 if (selected) {
 
@@ -1284,7 +1057,6 @@ function initialiseSearchEvents() {
                 }
 
             }
-
 
             else if (
                 event.key === "Escape"
@@ -1318,7 +1090,6 @@ function initialiseSearchEvents() {
 
         }
     );
-
 }
 
 
@@ -1335,9 +1106,7 @@ document.addEventListener(
                 "header.html"
             )
         ) {
-
             return;
-
         }
 
 
@@ -1359,7 +1128,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   GLOBAL KEYBOARD SHORTCUT
+   ⌘K / CTRL+K
    ========================================================= */
 
 document.addEventListener(
@@ -1395,15 +1164,14 @@ document.addEventListener(
    RECENT SEARCHES
    ========================================================= */
 
-function saveRecentSearch(
-    query
-) {
+function saveRecentSearch(query) {
 
     query =
         query.trim();
 
-
-    if (!query) return;
+    if (!query) {
+        return;
+    }
 
 
     let searches =
@@ -1420,16 +1188,20 @@ function saveRecentSearch(
         );
 
 
-    searches.unshift(query);
+    searches.unshift(
+        query
+    );
 
 
     searches =
-        searches.slice(0, 5);
+        searches.slice(
+            0,
+            5
+        );
 
 
     localStorage.setItem(
         "recent-searches",
         JSON.stringify(searches)
     );
-
 }

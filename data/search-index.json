@@ -10,20 +10,16 @@
             "main"
         ]
     },
-
     {
         "title": "About",
         "url": "/pages/about.html",
-        "description": "Learn more about the website and its purpose.",
+        "description": "Learn more about the website.",
         "category": "Page",
         "keywords": [
             "about",
-            "information",
-            "company",
-            "organization"
+            "information"
         ]
     },
-
     {
         "title": "Resources",
         "url": "/pages/resources.html",
@@ -31,25 +27,22 @@
         "category": "Resources",
         "keywords": [
             "resources",
-            "information",
             "guides",
+            "information",
             "help"
         ]
     },
-
     {
         "title": "Articles",
         "url": "/pages/articles.html",
-        "description": "Read articles, insights and updates.",
+        "description": "Read articles and updates.",
         "category": "Articles",
         "keywords": [
             "articles",
             "blog",
-            "news",
             "updates"
         ]
     },
-
     {
         "title": "Contact",
         "url": "/pages/contact.html",
@@ -58,8 +51,7 @@
         "keywords": [
             "contact",
             "email",
-            "support",
-            "help"
+            "support"
         ]
     }
 ]

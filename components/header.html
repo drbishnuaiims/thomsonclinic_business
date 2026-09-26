@@ -3,12 +3,9 @@
     <div class="site-nav">
 
         <!-- BRAND -->
-
         <a href="/" class="site-brand">
 
-            <span class="brand-icon">
-                Y
-            </span>
+            <span class="brand-icon">Y</span>
 
             <span class="brand-name">
                 Your Website
@@ -17,9 +14,8 @@
         </a>
 
 
-        <!-- DESKTOP MENU -->
-
-        <nav class="site-menu" id="siteMenu">
+        <!-- DESKTOP NAVIGATION -->
+        <nav class="site-menu">
 
             <a href="/" class="nav-link">
                 Home
@@ -45,15 +41,13 @@
 
 
         <!-- RIGHT CONTROLS -->
-
         <div class="nav-controls">
 
 
             <!-- SEARCH -->
-
             <button
-                class="nav-control search-trigger"
                 type="button"
+                class="nav-control search-trigger"
                 aria-label="Search website">
 
                 <span class="control-icon">
@@ -72,18 +66,16 @@
 
 
             <!-- APPEARANCE -->
-
             <div class="appearance-container">
 
                 <button
-                    class="nav-control theme-trigger"
                     type="button"
+                    class="nav-control theme-trigger"
                     id="globalThemeButton"
                     aria-label="Change appearance"
                     aria-expanded="false">
 
-                    <span
-                        id="globalThemeIcon">
+                    <span id="globalThemeIcon">
                         ◐
                     </span>
 
@@ -91,7 +83,6 @@
 
 
                 <!-- APPEARANCE POPOVER -->
-
                 <div
                     class="appearance-popover"
                     id="appearancePopover">
@@ -114,8 +105,8 @@
 
 
                         <!-- LIGHT -->
-
                         <button
+                            type="button"
                             class="appearance-option"
                             data-theme-choice="light">
 
@@ -123,15 +114,12 @@
 
                                 <div class="preview-window">
 
-                                    <div class="preview-toolbar">
-                                    </div>
+                                    <div class="preview-toolbar"></div>
 
                                     <div class="preview-content">
-
                                         <span></span>
                                         <span></span>
                                         <span></span>
-
                                     </div>
 
                                 </div>
@@ -141,12 +129,9 @@
 
                             <div class="appearance-option-name">
 
-                                <span>
-                                    Light
-                                </span>
+                                <span>Light</span>
 
-                                <span
-                                    class="appearance-check">
+                                <span class="appearance-check">
                                     ✓
                                 </span>
 
@@ -155,10 +140,9 @@
                         </button>
 
 
-
                         <!-- SYSTEM -->
-
                         <button
+                            type="button"
                             class="appearance-option"
                             data-theme-choice="system">
 
@@ -166,15 +150,12 @@
 
                                 <div class="preview-window">
 
-                                    <div class="preview-toolbar">
-                                    </div>
+                                    <div class="preview-toolbar"></div>
 
                                     <div class="preview-content">
-
                                         <span></span>
                                         <span></span>
                                         <span></span>
-
                                     </div>
 
                                 </div>
@@ -184,12 +165,9 @@
 
                             <div class="appearance-option-name">
 
-                                <span>
-                                    System
-                                </span>
+                                <span>System</span>
 
-                                <span
-                                    class="appearance-check">
+                                <span class="appearance-check">
                                     ✓
                                 </span>
 
@@ -198,10 +176,9 @@
                         </button>
 
 
-
                         <!-- DARK -->
-
                         <button
+                            type="button"
                             class="appearance-option"
                             data-theme-choice="dark">
 
@@ -209,15 +186,12 @@
 
                                 <div class="preview-window">
 
-                                    <div class="preview-toolbar">
-                                    </div>
+                                    <div class="preview-toolbar"></div>
 
                                     <div class="preview-content">
-
                                         <span></span>
                                         <span></span>
                                         <span></span>
-
                                     </div>
 
                                 </div>
@@ -227,12 +201,9 @@
 
                             <div class="appearance-option-name">
 
-                                <span>
-                                    Dark
-                                </span>
+                                <span>Dark</span>
 
-                                <span
-                                    class="appearance-check">
+                                <span class="appearance-check">
                                     ✓
                                 </span>
 
@@ -240,18 +211,16 @@
 
                         </button>
 
-
                     </div>
 
 
                     <div class="appearance-footer">
 
                         <span>
-                            Current appearance:
+                            Current appearance
                         </span>
 
-                        <strong
-                            id="currentAppearanceLabel">
+                        <strong id="currentAppearanceLabel">
                             System
                         </strong>
 
@@ -262,13 +231,13 @@
             </div>
 
 
-            <!-- MOBILE -->
-
+            <!-- MOBILE MENU -->
             <button
-                class="nav-control mobile-trigger"
                 type="button"
+                class="nav-control mobile-trigger"
                 id="mobileMenuButton"
-                aria-label="Open navigation">
+                aria-label="Open navigation"
+                aria-expanded="false">
 
                 <span class="hamburger">
 
@@ -286,7 +255,6 @@
 
 
     <!-- MOBILE NAVIGATION -->
-
     <div
         class="mobile-navigation"
         id="mobileNavigation">
@@ -311,8 +279,12 @@
             Contact
         </a>
 
-        <button class="mobile-search-trigger">
+        <button
+            type="button"
+            class="mobile-search-trigger">
+
             ⌕ &nbsp; Search
+
         </button>
 
     </div>
